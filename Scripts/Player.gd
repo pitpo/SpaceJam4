@@ -1,7 +1,7 @@
 extends KinematicBody
 
 var velocity = Vector3()
-var jump_strength = 7
+var jump_strength = 8
 
 var equipped_crown = System.CROWN.SLOWDOWN
 
@@ -26,5 +26,5 @@ func _physics_process(delta):
 	if Input.is_action_pressed("player_move_jump") and is_on_floor():
 		velocity += Vector3.UP * jump_strength
 	
-	velocity = move_and_slide(velocity, Vector3.UP, true)
+	velocity = move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(20))
 	translation.z = clamp(translation.z, -4, 0)
