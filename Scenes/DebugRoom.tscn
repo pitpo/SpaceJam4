@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Nodes/SampleEnemy.tscn" type="PackedScene" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -32,4 +33,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.154 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.945063, 0.326888, 0, -0.326888, 0.945063, -0.136691, 2.48778, 5.29831 )
+
+[node name="SampleEnemy" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01439, 0.75, -0.013875 )
 

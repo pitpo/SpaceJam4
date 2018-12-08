@@ -3,8 +3,14 @@ extends KinematicBody
 var velocity = Vector3()
 var jump_strength = 5
 
+var equipped_crown = System.CROWN.SLOWDOWN
+
 var x_action = 0
 var z_action = 0
+
+func _process(delta):
+	if Input.is_action_just_pressed("player_crown_used"):
+		System.crown_used(equipped_crown)
 
 func _physics_process(delta):
 	velocity += Vector3.DOWN * 10 * delta
