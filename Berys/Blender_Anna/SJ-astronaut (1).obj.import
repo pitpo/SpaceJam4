@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/SJ-astronaut (1).obj-c76e7984b94a2173c47c26367d17d638.mesh"
+
+[deps]
+
+files=[ "res://.import/SJ-astronaut (1).obj-c76e7984b94a2173c47c26367d17d638.mesh" ]
+
+source_file="res://Berys/Blender_Anna/SJ-astronaut (1).obj"
+dest_files=[ "res://.import/SJ-astronaut (1).obj-c76e7984b94a2173c47c26367d17d638.mesh", "res://.import/SJ-astronaut (1).obj-c76e7984b94a2173c47c26367d17d638.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
