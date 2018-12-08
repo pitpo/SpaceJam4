@@ -36,19 +36,19 @@ func _physics_process(delta):
 	var move_z = int(Input.is_action_pressed("player_move_backward")) - int(Input.is_action_pressed("player_move_forward"))
 	velocity.z += move_z
 	
+	var walking = false
 	if move_x > 0:
 		$PlayerModel.rotation_degrees.y = 90
 		dir = 1
+		walking = true
 	elif move_x < 0:
 		$PlayerModel.rotation_degrees.y = -90
 		dir = -1
+		walking = true
 	
 	if Input.is_action_pressed("player_move_jump") and is_on_floor():
 		velocity += Vector3.UP * jump_strength
 		animator.play("start_jump")
-	
-	if translation.y < -20:
-		System.game.ui.health = 0
 	
 	velocity = move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(20))
 	translation.z = clamp(translation.z, -4, 0)
@@ -57,8 +57,16 @@ func _physics_process(delta):
 		if !was_on_floor:
 			animator.play("end_jump")
 		was_on_floor = true
+	
+		if walking and animator.current_animation != "Running" and animator.current_animation != "end_jump":
+			animator.play("Running")
+		elif !walking and animator.current_animation != "Breathing" and animator.current_animation != "end_jump":
+			animator.play("Breathing")
 	else:
 		was_on_floor = false
+	
+	if translation.y < -20:
+		System.game.ui.health = 0
 
 func use_crown():
 	match equipped_crown:
