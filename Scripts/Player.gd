@@ -31,6 +31,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("player_move_jump") and is_on_floor():
 		velocity += Vector3.UP * jump_strength
 	
+	if translation.y < -20:
+		System.game.ui.health = 0
+	
 	velocity = move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(20))
 	translation.z = clamp(translation.z, -4, 0)
 
