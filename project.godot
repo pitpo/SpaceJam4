@@ -16,7 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="SpaceJam4"
+run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/dpi/allow_hidpi=true
 
 [rendering]
 
