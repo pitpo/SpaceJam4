@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Models/Level1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/UFOEnemy.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -15,4 +16,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.973, 1.355, 0 )
 
 [node name="Level" parent="." instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0, -2.10382 )
+
+[node name="UFOEnemy" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0.991611, 1.93959, -1.36751 )
 

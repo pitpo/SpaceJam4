@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.689685 )
-aabb = AABB( -1, -1, -1.66735, 2, 2, 3.3347 )
+aabb = AABB( -1, -1, -5.60879, 2, 2, 9.8084 )
 
 [node name="RayCast" type="RayCast" parent="."]
 enabled = true

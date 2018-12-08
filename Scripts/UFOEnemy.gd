@@ -7,11 +7,20 @@ var speed = 2
 func _physics_process(delta):
 	if is_visible:
 		var nearest_floor = $RayCast.get_collider()
-		print(nearest_floor)
 		if nearest_floor:
-			translation.y = nearest_floor.translation.y + 1.5 + sin(OS.get_ticks_msec()*0.001)
-		velocity.x = sign(System.player.translation.x - translation.x) * speed
-		move_and_slide(velocity, Vector3.UP)
+			var dest_y = nearest_floor.translation.y + 2.5 + sin(OS.get_ticks_msec()*0.003) * 0.65
+			velocity.y = dest_y - translation.y
+		else:
+			velocity.y = 0
+		var player_direction = sign(System.player.translation.x - translation.x)
+		velocity.x = player_direction
+		velocity.z = sign(System.player.translation.z - translation.z)
+		if player_direction < 0 && rotation_degrees.y > -90:
+			rotation_degrees.y -= delta * 300
+		elif player_direction > 0 && rotation_degrees.y < 90:
+			rotation_degrees.y += delta * 300
+		move_and_slide(velocity.normalized() * speed, Vector3.UP)
+		
 	else:
 		velocity = Vector3()
 
