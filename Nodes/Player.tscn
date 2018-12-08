@@ -9,10 +9,11 @@ albedo_color = Color( 0, 0.941176, 0.941176, 1 )
 [sub_resource type="CubeMesh" id=2]
 
 material = SubResource( 1 )
+size = Vector3( 1.5, 1.5, 1.5 )
 
 [sub_resource type="BoxShape" id=3]
 
-extents = Vector3( 1.00243, 0.977177, 1 )
+extents = Vector3( 0.75, 0.75, 0.75 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -22,6 +23,5 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0117514, 0 )
 shape = SubResource( 3 )
 
