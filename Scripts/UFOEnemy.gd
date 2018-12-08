@@ -3,7 +3,7 @@ extends "res://Scripts/Enemy.gd"
 var is_visible = false
 var velocity = Vector3()
 var speed = 2
-
+var time_to_shoot = 2
 func _physics_process(delta):
 	if is_visible:
 		var nearest_floor = $RayCast.get_collider()
@@ -19,6 +19,12 @@ func _physics_process(delta):
 			rotation_degrees.y -= delta * 150 * speed
 		elif player_direction > 0 && rotation_degrees.y < 90:
 			rotation_degrees.y += delta * 150 * speed
+		if time_to_shoot < 0:
+			var projectile = preload("res://Nodes/UFOProjectile.tscn").instance()
+			projectile.translation = translation
+			get_parent().add_child(projectile)
+			time_to_shoot = 2
+		time_to_shoot -= delta
 		move_and_slide(velocity.normalized() * speed, Vector3.UP)
 		
 	else:
