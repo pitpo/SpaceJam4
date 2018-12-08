@@ -2,10 +2,10 @@ extends RigidBody
 
 var boomerang_speed
 
-func boomerang():
+func boomerang(dir):
 	System.reparent(self, System.game)
 	$Boomerang.play("Rotate")
-	boomerang_speed = 10
+	boomerang_speed = 10 * dir
 
 func throw():
 	System.reparent(self, System.game)
@@ -13,9 +13,13 @@ func throw():
 
 func _physics_process(delta):
 	if boomerang_speed != null:
-		if boomerang_speed > 0:
+		var sgn = sign(boomerang_speed)
+		
+		if boomerang_speed != 0:
 			translation.x += boomerang_speed * delta
-			boomerang_speed -= delta * 10
+			boomerang_speed -= delta * 10 * sign(boomerang_speed)
+			
+			if sgn != sign(boomerang_speed): boomerang_speed = 0
 		else:
 			var to_target = ((System.player.global_transform.origin + System.player.crown_origin) - global_transform.origin)
 			
