@@ -3,6 +3,7 @@ extends Spatial
 onready var paralax = $"../../../ParallaxBackground"
 onready var camera = $Camera
 onready var player = $Player
+onready var ui = $"../../../UI"
 
 func _init():
 	System.game = self
