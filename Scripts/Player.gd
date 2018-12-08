@@ -5,6 +5,7 @@ onready var animator = $PlayerModel/AnimationPlayer
 
 var velocity = Vector3()
 var jump_strength = 8
+var dir = 1
 
 var equipped_crown = System.CROWN.BOOMERANG
 
@@ -35,6 +36,13 @@ func _physics_process(delta):
 	var move_z = int(Input.is_action_pressed("player_move_backward")) - int(Input.is_action_pressed("player_move_forward"))
 	velocity.z += move_z
 	
+	if move_x > 0:
+		$PlayerModel.rotation_degrees.y = 90
+		dir = 1
+	elif move_x < 0:
+		$PlayerModel.rotation_degrees.y = -90
+		dir = -1
+	
 	if Input.is_action_pressed("player_move_jump") and is_on_floor():
 		velocity += Vector3.UP * jump_strength
 		animator.play("start_jump")
@@ -53,7 +61,7 @@ func use_crown():
 	match equipped_crown:
 		System.CROWN.BOOMERANG:
 			if has_node("Crown"):
-				$Crown.boomerang()
+				$Crown.boomerang(dir)
 		System.CROWN.SLOWDOWN:
 			System.emit_signal("slowdown_switched")
 
