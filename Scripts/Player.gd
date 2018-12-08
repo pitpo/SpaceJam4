@@ -6,6 +6,8 @@ onready var animator = $PlayerModel/AnimationPlayer
 var velocity = Vector3()
 var jump_strength = 8
 var dir = 1
+var jumping = false
+var dead = false
 
 var equipped_crown = System.CROWN.BOOMERANG
 
@@ -27,6 +29,7 @@ func _process(delta):
 		use_crown()
 
 func _physics_process(delta):
+	if dead: return
 	velocity += Vector3.DOWN * 30 * delta
 	velocity.x *= 0.9
 	velocity.z *= 0.9
@@ -47,13 +50,15 @@ func _physics_process(delta):
 		walking = true
 	
 	if Input.is_action_pressed("player_move_jump") and is_on_floor():
+		jumping = true
 		velocity += Vector3.UP * jump_strength
 		animator.play("start_jump")
 	
-	velocity = move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(20))
+	velocity = move_and_slide_with_snap(velocity, Vector3() if jumping else Vector3.DOWN, Vector3.UP, true, 4, deg2rad(20))
 	translation.z = clamp(translation.z, -4, 0)
 	
 	if is_on_floor():
+		jumping = false
 		if !was_on_floor:
 			animator.play("end_jump")
 		was_on_floor = true
@@ -81,3 +86,10 @@ func animation_end(anim):
 		animator.play("true_mid Jump")
 	elif anim == "end_jump":
 		animator.play("Breathing")
+	elif anim == "DIE":
+		get_tree().change_scene("res://Scenes/GameOver.tscn")
+
+func die():
+	if !dead:
+		animator.play("DIE")
+		dead = true
