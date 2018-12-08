@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/Crown.gd" type="Script" id=3]
 [ext_resource path="res://Models/Crown.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CylinderShape" id=1]
+[sub_resource type="CylinderShape" id=4]
 
 radius = 0.282473
 
@@ -39,7 +39,7 @@ transform = Transform( -1.31134e-008, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-008,
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004, 0.955, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Crown" type="RigidBody" parent="."]
 collision_layer = 2
