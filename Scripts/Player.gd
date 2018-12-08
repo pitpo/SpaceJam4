@@ -5,6 +5,10 @@ var jump_strength = 7
 
 var equipped_crown = System.CROWN.SLOWDOWN
 
+func _ready():
+	$PlayerModel/AnimationPlayer.get_animation("default").loop = true
+	$PlayerModel/AnimationPlayer.play("default")
+
 func _process(delta):
 	if Input.is_action_just_pressed("player_crown_used"):
 		System.crown_used(equipped_crown)
