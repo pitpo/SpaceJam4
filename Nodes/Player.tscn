@@ -15,6 +15,6 @@ script = ExtResource( 1 )
 transform = Transform( -1.31134e-008, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-008, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0.0210366, 0.983786, 0.0229492 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0.0210366, 0.704362, 0.0229492 )
 shape = SubResource( 1 )
 
