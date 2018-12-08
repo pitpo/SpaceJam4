@@ -47,6 +47,9 @@ func _physics_process(delta):
 		velocity += Vector3.UP * jump_strength
 		animator.play("start_jump")
 	
+	if translation.y < -20:
+		System.game.ui.health = 0
+	
 	velocity = move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(20))
 	translation.z = clamp(translation.z, -4, 0)
 	
