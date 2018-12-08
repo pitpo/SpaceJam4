@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2018-12-08T23:03:52</created>
-    <modified>2018-12-08T23:03:52</modified>
+    <created>2018-12-09T00:25:35</created>
+    <modified>2018-12-09T00:25:35</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -143,7 +143,7 @@
     <effect id="animal_body-effect">
       <profile_COMMON>
         <technique sid="common">
-          <phong>
+          <lambert>
             <emission>
               <color sid="emission">0 0 0 1</color>
             </emission>
@@ -151,21 +151,15 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <color sid="diffuse">0.207839 0.053886 0.071094 1</color>
+              <color sid="diffuse">0.4200253 0.1033851 0.1382259 1</color>
             </diffuse>
-            <specular>
-              <color sid="specular">0.08350125 0.08350125 0.08350125 1</color>
-            </specular>
-            <shininess>
-              <float sid="shininess">49</float>
-            </shininess>
             <transparent opaque="A_ONE">
               <color>1 1 1 1</color>
             </transparent>
             <index_of_refraction>
               <float sid="index_of_refraction">1</float>
             </index_of_refraction>
-          </phong>
+          </lambert>
         </technique>
       </profile_COMMON>
     </effect>
