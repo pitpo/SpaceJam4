@@ -3,7 +3,9 @@ extends KinematicBody
 var velocity = Vector3()
 var jump_strength = 8
 
-var equipped_crown = System.CROWN.SLOWDOWN
+var equipped_crown = System.CROWN.BOOMERANG
+
+onready var crown_origin = $Crown.translation
 
 func _init():
 	System.player = self
@@ -14,7 +16,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("player_crown_used"):
-		System.crown_used(equipped_crown)
+		use_crown()
 
 func _physics_process(delta):
 	velocity += Vector3.DOWN * 30 * delta
@@ -31,3 +33,11 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(20))
 	translation.z = clamp(translation.z, -4, 0)
+
+func use_crown():
+	match equipped_crown:
+		System.CROWN.BOOMERANG:
+			if has_node("Crown"):
+				$Crown.boomerang()
+		System.CROWN.SLOWDOWN:
+			System.emit_signal("slowdown_switched")

@@ -1,11 +1,14 @@
 extends Node
 
-enum CROWN {SLOWDOWN}
+enum CROWN {BOOMERANG, SLOWDOWN}
 
 signal slowdown_switched
 
 var player
+var game
 
-func crown_used(var crown):
-	if crown == CROWN.SLOWDOWN:
-		emit_signal("slowdown_switched")
+func reparent(node, new_parent):
+	var old_pos = node.global_transform
+	node.get_parent().remove_child(node)
+	new_parent.add_child(node)
+	node.global_transform = old_pos

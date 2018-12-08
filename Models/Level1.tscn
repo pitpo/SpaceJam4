@@ -9,6 +9,8 @@ data = PoolVector3Array( -0.7892, 0, -0.9922, -0.5919, 0, -0.8921, -0.6139, -0.4
 [node name="Scene Root" instance=ExtResource( 1 )]
 
 [node name="StaticBody" type="StaticBody" parent="Cube" index="0"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Cube/StaticBody" index="0"]
 shape = SubResource( 1 )
