@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/UFOEnemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -36,4 +37,7 @@ transform = Transform( 1, 0, 0, 0, 0.945063, 0.326888, 0, -0.326888, 0.945063, -
 
 [node name="UFOEnemy" parent="." instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -3.33914, 3.3763, -1.88538 )
+
+[node name="Spatial" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22322, 0.627112, -0.00627375 )
 
