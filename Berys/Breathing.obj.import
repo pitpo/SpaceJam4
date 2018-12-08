@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Breathing.obj-97862b6d379e145e773b99ec3e229ad3.mesh"
+
+[deps]
+
+files=[ "res://.import/Breathing.obj-97862b6d379e145e773b99ec3e229ad3.mesh" ]
+
+source_file="res://Berys/Breathing.obj"
+dest_files=[ "res://.import/Breathing.obj-97862b6d379e145e773b99ec3e229ad3.mesh", "res://.import/Breathing.obj-97862b6d379e145e773b99ec3e229ad3.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Finish.obj-f40cec872c0574a32a38c72ff2f6e8dc.mesh"
+
+[deps]
+
+files=[ "res://.import/Finish.obj-f40cec872c0574a32a38c72ff2f6e8dc.mesh" ]
+
+source_file="res://Berys/Blender_Anna/Finish.obj"
+dest_files=[ "res://.import/Finish.obj-f40cec872c0574a32a38c72ff2f6e8dc.mesh", "res://.import/Finish.obj-f40cec872c0574a32a38c72ff2f6e8dc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
