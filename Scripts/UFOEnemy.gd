@@ -16,9 +16,9 @@ func _physics_process(delta):
 		velocity.x = player_direction
 		velocity.z = sign(System.player.translation.z - translation.z)
 		if player_direction < 0 && rotation_degrees.y > -90:
-			rotation_degrees.y -= delta * 300
+			rotation_degrees.y -= delta * 150 * speed
 		elif player_direction > 0 && rotation_degrees.y < 90:
-			rotation_degrees.y += delta * 300
+			rotation_degrees.y += delta * 150 * speed
 		move_and_slide(velocity.normalized() * speed, Vector3.UP)
 		
 	else:
