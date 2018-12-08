@@ -5,6 +5,9 @@ var jump_strength = 8
 
 var equipped_crown = System.CROWN.SLOWDOWN
 
+func _init():
+	System.player = self
+
 func _ready():
 	$PlayerModel/AnimationPlayer.get_animation("default").loop = true
 	$PlayerModel/AnimationPlayer.play("default")
