@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Nodes/Modules/BlockSmall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Berys/New_DAE/Scene_block/Material.material" type="Material" id=2]
@@ -71,18 +71,34 @@ surfaces/1 = {
 "vertex_count": 159
 }
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="Animation" id=4]
+
+resource_name = "Nowa animacja"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.42854, -0.916948, -9.37178 ), Vector3( 0.42854, 3.32439, -9.37178 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=5]
 
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0 )
 albedo_texture = ExtResource( 15 )
 
-[sub_resource type="QuadMesh" id=5]
+[sub_resource type="QuadMesh" id=6]
 
-material = SubResource( 4 )
+material = SubResource( 5 )
 size = Vector2( 11, 1 )
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=7]
 
 script/source = "extends MeshInstance
 
@@ -93,7 +109,7 @@ func _on_VisibilityNotifier_camera_entered(camera):
 		$AnimationPlayer.play(\"RevealTip\")
 		tip_revealed = true"
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 2.0
 tracks/0/type = "value"
@@ -109,20 +125,19 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=9]
 
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0 )
 albedo_texture = ExtResource( 16 )
 
-[sub_resource type="QuadMesh" id=9]
+[sub_resource type="QuadMesh" id=10]
 
-material = SubResource( 8 )
+material = SubResource( 9 )
 size = Vector2( 12, 1 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
-resource_name = "UnveilTip"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:mesh:material:albedo_color")
@@ -137,18 +152,18 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=12]
 
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0 )
 albedo_texture = ExtResource( 17 )
 
-[sub_resource type="QuadMesh" id=12]
+[sub_resource type="QuadMesh" id=13]
 
-material = SubResource( 11 )
+material = SubResource( 12 )
 size = Vector2( 12, 2 )
 
-[sub_resource type="GDScript" id=13]
+[sub_resource type="GDScript" id=14]
 
 script/source = "extends MeshInstance
 
@@ -160,7 +175,7 @@ func _on_VisibilityNotifier_camera_entered(camera):
 		tip_revealed = true
 "
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 
 length = 2.0
 tracks/0/type = "value"
@@ -176,18 +191,18 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=16]
 
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0 )
 albedo_texture = ExtResource( 18 )
 
-[sub_resource type="QuadMesh" id=16]
+[sub_resource type="QuadMesh" id=17]
 
-material = SubResource( 15 )
+material = SubResource( 16 )
 size = Vector2( 10, 1.5 )
 
-[sub_resource type="GDScript" id=17]
+[sub_resource type="GDScript" id=18]
 
 script/source = "extends MeshInstance
 
@@ -198,7 +213,7 @@ func _on_VisibilityNotifier_camera_entered(camera):
 		$AnimationPlayer.play(\"RevealTip\")
 		tip_revealed = true"
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 
 length = 2.0
 tracks/0/type = "value"
@@ -220,6 +235,7 @@ tracks/0/keys = {
 transform = Transform( 1, 0, 0, 0, 0.699235, -0.0467273, 0, 0.0327091, 0.998908, 0.362575, 2.97622, 30.9449 )
 
 [node name="Cube" type="MeshInstance" parent="."]
+editor/display_folded = true
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 50, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
@@ -234,8 +250,6 @@ transform = Transform( -1.28197, 0.900931, 0.501972, -0.27109, 0.478292, -1.5507
 mesh = SubResource( 3 )
 material/0 = null
 material/1 = null
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Crystal" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.552181, 0.0463423, 0.230106, -0.0820166, 0.589208, 0.0781499, -0.219931, -0.103376, 0.548584, -2.1715, 2.45988, 45.5796 )
@@ -392,8 +406,11 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="BigCrown2" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42854, 3.23262, -9.37178 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42854, -0.916948, -9.37178 )
 crown = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BigCrown2"]
+"anims/Nowa animacja" = SubResource( 4 )
 
 [node name="SingleCrystal2" parent="." instance=ExtResource( 13 )]
 transform = Transform( 0.0954347, 0.0960265, 0.322756, -0.328346, 0.10096, 0.06705, -0.0747054, -0.32107, 0.117614, -1.73674, 4.44828, 7.77465 )
@@ -724,48 +741,48 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03287, 3.16003, -27.357 )
 
 [node name="Tip2" type="MeshInstance" parent="."]
 transform = Transform( -3.0598e-008, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-008, -2.97023, 8.90828, 25.0483 )
-mesh = SubResource( 5 )
+mesh = SubResource( 6 )
 material/0 = null
-script = SubResource( 6 )
+script = SubResource( 7 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Tip2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08382, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tip2"]
-anims/RevealTip = SubResource( 7 )
+anims/RevealTip = SubResource( 8 )
 
 [node name="Tip1" type="MeshInstance" parent="."]
 transform = Transform( -3.0598e-008, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-008, -4.73433, 8.90828, 37.1345 )
-mesh = SubResource( 9 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Tip1"]
 autoplay = "UnveilTip"
-anims/UnveilTip = SubResource( 10 )
+anims/UnveilTip = SubResource( 11 )
 
 [node name="Tip3" type="MeshInstance" parent="."]
 transform = Transform( -2.18557e-008, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-008, -2.94693, 4.98369, 13.538 )
-mesh = SubResource( 12 )
+mesh = SubResource( 13 )
 material/0 = null
-script = SubResource( 13 )
+script = SubResource( 14 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Tip3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41485, 0, -1.43051e-006 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tip3"]
-anims/RevealTip = SubResource( 14 )
+anims/RevealTip = SubResource( 15 )
 
 [node name="Tip4" type="MeshInstance" parent="."]
 transform = Transform( -3.0598e-008, 0, 1, 0, 0.7, 0, -0.7, 0, -4.37114e-008, -2.85118, 4.59184, -12.0254 )
-mesh = SubResource( 16 )
+mesh = SubResource( 17 )
 material/0 = null
-script = SubResource( 17 )
+script = SubResource( 18 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Tip4"]
 transform = Transform( 1, 0, -7.10543e-015, 0, 1, 0, 7.10543e-015, 0, 1, 6.4933, 0, 2.38419e-007 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tip4"]
-anims/RevealTip = SubResource( 18 )
+anims/RevealTip = SubResource( 19 )
 
 [node name="Platform" parent="." instance=ExtResource( 19 )]
 transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, -0.64907, 12.0213, -47.8685 )
@@ -778,6 +795,8 @@ light_indirect_energy = 5.0
 light_bake_mode = 2
 shadow_enabled = true
 shadow_color = Color( 0.160784, 0.0627451, 0.203922, 1 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 
 [connection signal="camera_entered" from="Tip2/VisibilityNotifier" to="Tip2" method="_on_VisibilityNotifier_camera_entered"]
 [connection signal="camera_entered" from="Tip3/VisibilityNotifier" to="Tip3" method="_on_VisibilityNotifier_camera_entered"]
