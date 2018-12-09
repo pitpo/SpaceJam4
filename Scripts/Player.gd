@@ -11,6 +11,7 @@ var jump_strength = 8
 var dir = 1
 var jumping = false
 var dead = false
+var jetpack = false
 
 var equipped_crown = System.CROWN.BOOMERANG
 
@@ -30,12 +31,21 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("player_crown_used"):
 		use_crown()
-	if Input.is_action_just_released("player_crown_used"):
+	if Input.is_action_just_released("player_crown_used") and equipped_crown == System.CROWN.JETPACK:
 		disable_jetpack()
 
 func _physics_process(delta):
 	if dead: return
-	velocity += Vector3.DOWN * 30 * delta
+	
+	if jetpack and $Crown/Crown4/Particles.visible:
+		velocity += Vector3.UP * 10 * delta
+		jetpack -= delta
+		if jetpack < 0:
+			jetpack = false
+			$Crown/Crown4/Particles.visible = false
+	else:
+		velocity += Vector3.DOWN * 30 * delta
+	
 	velocity.x *= 0.9
 	velocity.z *= 0.9
 	
@@ -53,16 +63,18 @@ func _physics_process(delta):
 		dir = -1
 		walking = true
 	
-	if Input.is_action_pressed("player_move_jump") and is_on_floor():
+	if Input.is_action_pressed("player_move_jump") and !jetpack and is_on_floor():
 		jumping = true
 		velocity += Vector3.UP * jump_strength
 		animator.play("start_jump")
 	
-	velocity = move_and_slide_with_snap(velocity, Vector3() if jumping else Vector3.DOWN, Vector3.UP, true, 4, deg2rad(20))
+	velocity = move_and_slide_with_snap(velocity, Vector3() if jumping or jetpack else Vector3.DOWN, Vector3.UP, true, 4, deg2rad(20))
 	translation.z = clamp(translation.z, -4, 0)
 	
 	if is_on_floor():
 		jumping = false
+		jetpack = false
+		
 		if !was_on_floor:
 			animator.play("end_jump")
 		was_on_floor = true
@@ -101,6 +113,8 @@ func use_crown():
 
 func enable_jetpack():
 	$Crown/Crown4/Particles.visible = true
+	if !jetpack:
+		jetpack = 1
 
 func disable_jetpack():
 	$Crown/Crown4/Particles.visible = false
