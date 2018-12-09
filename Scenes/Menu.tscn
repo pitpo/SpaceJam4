@@ -50,7 +50,7 @@ margin_top = -164.0
 margin_right = 125.0
 margin_bottom = -94.0
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.254902, 0.898039, 0.215686, 1 )
+custom_colors/font_color = Color( 0.686275, 0.309804, 0.803922, 1 )
 text = "START"
 flat = true
 
@@ -60,7 +60,7 @@ margin_top = 51.0
 margin_right = 761.0
 margin_bottom = 155.0
 custom_fonts/normal_font = SubResource( 3 )
-custom_colors/default_color = Color( 0.254902, 0.898039, 0.215686, 1 )
+custom_colors/default_color = Color( 0.686275, 0.309804, 0.803922, 1 )
 text = "KING IN EXILE"
 
 [connection signal="pressed" from="Button" to="." method="on_Button_pressed"]
