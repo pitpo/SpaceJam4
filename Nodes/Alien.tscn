@@ -37,7 +37,11 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 1.13724, 0.103693 ), Vector3( 0, 1.017, -0.386 ), Vector3( 0, 1.16, -0.058 ), Vector3( 0, 0.994, 0.618 ), Vector3( 0, 0.747, 0.514 ), Vector3( 0, 0.585, 0.574 ), Vector3( 0, 1.038, 0.573 ), Vector3( 0, 1.137, 0.104 ) ]
 }
 
-[node name="Alien" type="KinematicBody"]
+[node name="Alien" type="KinematicBody" groups=[
+"enemies",
+]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="Alien" parent="." instance=ExtResource( 2 )]
@@ -47,7 +51,7 @@ transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 playback_speed = 3.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.173648, -0.984807, 0, 0.984807, -0.173648, 0, 1.13724, 0.103693 )
+transform = Transform( 1, 0, 0, 0, -0.659739, -0.751494, 0, 0.751494, -0.659739, 0, 1.0578, 0.4792 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mechano_spider.wav-b0e6d0e63d11cfae05c7c2004ec148ad.sample"
+
+[deps]
+
+source_file="res://Berys/Muzyka/Don_t Stop/mechano_spider.wav"
+dest_files=[ "res://.import/mechano_spider.wav-b0e6d0e63d11cfae05c7c2004ec148ad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

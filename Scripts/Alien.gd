@@ -8,8 +8,14 @@ var damage_cooldown = 0
 func _ready():
 	$Alien/AnimationPlayer.playback_speed = 3
 	$Alien/AnimationPlayer.get_animation("Walk").loop = true
+	health = 3
 
 func _physics_process(delta):
+	if health == 0:
+		$Alien/AnimationPlayer.playback_speed = 2 * System.time_scale()
+		if !$Alien/AnimationPlayer.is_playing():
+			queue_free()
+		return
 	if is_visible:
 		$Alien/AnimationPlayer.playback_speed = 3 * System.time_scale()
 		
@@ -49,3 +55,7 @@ func on_animation_finished(anim_name):
 	rotation_degrees.y = sign(System.player.translation.x - translation.x) * 90
 	if anim_name == "ArmatureAction":
 		$Alien/AnimationPlayer.play("Walk")
+
+func die():
+	rotation_degrees.y = 90
+	$Alien/AnimationPlayer.play("death")

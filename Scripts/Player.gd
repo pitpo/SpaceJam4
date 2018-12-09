@@ -4,11 +4,14 @@ onready var crown = $Crown
 onready var crown_origin = $Crown.translation
 onready var animator = $PlayerModel/AnimationPlayer
 
+var crowns = 4
+
 var velocity = Vector3()
 var jump_strength = 8
 var dir = 1
 var jumping = false
 var dead = false
+var jetpack = false
 
 var equipped_crown = System.CROWN.BOOMERANG
 
@@ -28,10 +31,21 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("player_crown_used"):
 		use_crown()
+	if Input.is_action_just_released("player_crown_used") and equipped_crown == System.CROWN.JETPACK:
+		disable_jetpack()
 
 func _physics_process(delta):
 	if dead: return
-	velocity += Vector3.DOWN * 30 * delta
+	
+	if jetpack and $Crown/Crown4/Particles.visible:
+		velocity += Vector3.UP * 10 * delta
+		jetpack -= delta
+		if jetpack < 0:
+			jetpack = false
+			$Crown/Crown4/Particles.visible = false
+	else:
+		velocity += Vector3.DOWN * 30 * delta
+	
 	velocity.x *= 0.9
 	velocity.z *= 0.9
 	
@@ -49,16 +63,18 @@ func _physics_process(delta):
 		dir = -1
 		walking = true
 	
-	if Input.is_action_pressed("player_move_jump") and is_on_floor():
+	if Input.is_action_pressed("player_move_jump") and !jetpack and is_on_floor():
 		jumping = true
 		velocity += Vector3.UP * jump_strength
 		animator.play("start_jump")
 	
-	velocity = move_and_slide_with_snap(velocity, Vector3() if jumping else Vector3.DOWN, Vector3.UP, true, 4, deg2rad(20))
+	velocity = move_and_slide_with_snap(velocity, Vector3() if jumping or jetpack else Vector3.DOWN, Vector3.UP, true, 4, deg2rad(20))
 	translation.z = clamp(translation.z, -4, 0)
 	
 	if is_on_floor():
 		jumping = false
+		jetpack = false
+		
 		if !was_on_floor:
 			animator.play("end_jump")
 		was_on_floor = true
@@ -75,9 +91,9 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventKey:
-		if event.pressed and event.scancode >= 49 and event.scancode < 52 and has_node("Crown"):
+		if event.pressed and event.scancode >= 49 and event.scancode < 49 + crowns and has_node("Crown"):
 			equipped_crown = event.scancode - 49
-			for i in 3:
+			for i in crowns:
 				$Crown.get_child(i).visible = (equipped_crown == i)
 
 func use_crown():
@@ -92,6 +108,16 @@ func use_crown():
 				$Crown.throw(dir)
 			else:
 				crown.teleport()
+		System.CROWN.JETPACK:
+			enable_jetpack()
+
+func enable_jetpack():
+	$Crown/Crown4/Particles.visible = true
+	if !jetpack:
+		jetpack = 1
+
+func disable_jetpack():
+	$Crown/Crown4/Particles.visible = false
 
 func animation_end(anim):
 	if anim == "start_jump":
