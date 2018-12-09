@@ -5,12 +5,16 @@ onready var animator = $"Scene Root/AnimationPlayer"
 var mode = "appear"
 var walk = -1
 
+var is_visible = false
+
 func _ready():
 	animator.get_animation("Walk").loop = true
 	
 	animator.play("Slideer")
 
 func _physics_process(delta):
+	if !is_visible: return
+	
 	var motion = Vector3()
 	
 	match mode:
@@ -59,3 +63,9 @@ func on_animation_end(anim_name):
 func on_attacked(body):
 	if body == System.player:
 		body.damage()
+
+func _on_VisibilityNotifier_camera_entered(camera):
+	is_visible = true
+
+func _on_VisibilityNotifier_camera_exited(camera):
+	is_visible = false

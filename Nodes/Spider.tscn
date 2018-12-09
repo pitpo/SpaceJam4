@@ -77,7 +77,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17578, 1.84303 )
 shape = SubResource( 5 )
 disabled = true
 
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
 [connection signal="animation_finished" from="Scene Root/AnimationPlayer" to="." method="on_animation_end"]
 [connection signal="body_entered" from="Area" to="." method="on_attacked"]
+[connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]
+[connection signal="camera_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_exited"]
 
 [editable path="Scene Root"]
