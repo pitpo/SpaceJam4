@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Berys/New_DAE/Ufo/Material_003.material" type="Material" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://Scripts/Enemy.gd\"
+
+var velocity = Vector3(-30, 50, 0)
+
+func _ready():
+	pass
+#	print(\"projectile fired \", translation.x, translation.y, translation.z)
+#	speed *= sign(System.player.translation.x - translation.x)
+
+func _physics_process(delta):
+	rotation += Vector3(-1+randf()*2, -1+randf()*2, -1+randf()*2) * delta * 10
+	
+	velocity += Vector3.DOWN * 5
+	
+	var col = move_and_collide(velocity * delta)
+	if col:
+		if col.collider == System.player:
+			System.player.damage()
+		queue_free()
+
+func on_camera_exited(camera):
+	queue_free()"
+
+[sub_resource type="SphereMesh" id=2]
+
+material = ExtResource( 1 )
+radius = 0.5
+height = 1.0
+
+[sub_resource type="SphereShape" id=3]
+
+radius = 0.484524
+
+[node name="SpiderTfu" type="KinematicBody"]
+script = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+
+[connection signal="camera_exited" from="VisibilityNotifier" to="." method="on_camera_exited"]

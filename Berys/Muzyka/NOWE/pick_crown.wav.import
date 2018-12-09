@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pick_crown.wav-b1ce7c996bd9c6341559d774a0f50c61.sample"
+
+[deps]
+
+source_file="res://Berys/Muzyka/NOWE/pick_crown.wav"
+dest_files=[ "res://.import/pick_crown.wav-b1ce7c996bd9c6341559d774a0f50c61.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -19,9 +19,10 @@ func reparent(node, new_parent):
 	new_parent.add_child(node)
 	node.global_transform = old_pos
 
-func play_sample_at(source):
+func play_sample_at(source, stream):
 	var sample = preload("res://Nodes/PointSample.tscn").instance()
 	sample.translation = source.translation
+	sample.stream = load(stream)
 	source.get_parent().add_child(sample)
 
 func time_scale():
