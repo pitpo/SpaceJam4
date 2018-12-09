@@ -22,6 +22,7 @@ gradient = SubResource( 1 )
 emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3( 0, -6, 0 )
+angular_velocity = 1.0
 color_ramp = SubResource( 2 )
 
 [sub_resource type="SpatialMaterial" id=4]
@@ -105,6 +106,7 @@ script = ExtResource( 2 )
 transform = Transform( 0.3, 0, 5.24537e-008, 0, 0.3, 0, -5.24537e-008, 0, 0.3, 0.0620342, 1.91394, 0 )
 
 [node name="Crown2" parent="Crown" instance=ExtResource( 4 )]
+editor/display_folded = true
 transform = Transform( 0.3, 0, -6.03961e-015, 0, 0.3, 0, 6.03961e-015, 0, 0.3, 0.0620342, 1.91394, 0 )
 visible = false
 
@@ -119,6 +121,7 @@ transform = Transform( 0.3, 0, 1.90582e-021, 0, 0.3, 0, -1.90582e-021, 0, 0.3, 0
 visible = false
 
 [node name="Crown4" parent="Crown" instance=ExtResource( 3 )]
+editor/display_folded = true
 transform = Transform( 0.3, 0, 5.24537e-008, 0, 0.3, 0, -5.24537e-008, 0, 0.3, 0.0620342, 1.91394, 0 )
 visible = false
 
@@ -138,6 +141,7 @@ shape = SubResource( 11 )
 anims/Rotate = SubResource( 12 )
 
 [node name="Area" type="Area" parent="Crown"]
+editor/display_folded = true
 collision_layer = 3
 collision_mask = 3
 
