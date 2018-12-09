@@ -7,7 +7,7 @@ onready var animator = $PlayerModel/AnimationPlayer
 var crowns = 4
 
 var velocity = Vector3()
-var jump_strength = 8
+var jump_strength = 10
 var dir = 1
 var jumping = false
 var dead = false

@@ -1,0 +1,192 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Models/Level1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/UFOEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Models/Platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Models/Platform2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Models/Tree.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Nodes/SmallCrown.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Nodes/Pillar1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Nodes/Platform.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Nodes/Pillar2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Nodes/Pillar3.tscn" type="PackedScene" id=13]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Spatial
+
+var positions = []
+var timer = 0
+
+func _ready():
+	for platform in get_children():
+		positions.append(platform.translation.y)
+
+func _physics_process(delta):
+	timer += delta * System.time_scale()
+	
+	for i in get_child_count():
+		get_child(i).translation.y = positions[i] + sin(timer) * 2 * (i%2*2-1)"
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Spatial
+
+var timer = 0
+var initial_pos
+
+func _ready():
+	initial_pos = translation.y
+
+func _physics_process(delta):
+	timer += delta * System.time_scale() * 8
+	
+	translation.y = initial_pos + sin(timer) * 3"
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Spatial
+
+var timer = 0
+var initial_pos
+
+func _ready():
+	initial_pos = translation.y
+
+func _physics_process(delta):
+	timer += delta * System.time_scale() * 8
+	
+	translation.y = initial_pos + cos(timer) * 5"
+
+[node name="Game" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.056, 1.355, -1.57326 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 5 )
+current = true
+
+[node name="Level" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0, -2.10382 )
+
+[node name="UFOEnemy" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0.991611, 1.93959, -1.36751 )
+
+[node name="Platforms" type="Spatial" parent="."]
+script = SubResource( 1 )
+
+[node name="Platform" parent="Platforms" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0353, -0.428, -2.47818 )
+
+[node name="Platform2" parent="Platforms" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0226, -0.271341, -3.45323 )
+
+[node name="Tree" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.958848, 0.283921, 0, -0.283921, 0.958848, 0, 0, 0, 1, -3.7797, -2.34267, -0.82207 )
+
+[node name="Tree3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.0755477, 0.0223702, 0.996891, -0.283921, 0.958848, 0, -0.955867, -0.283038, 0.0787901, 12.5167, -2.34267, -4.04197 )
+
+[node name="Tree2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.953863, -0.300242, 0, 0.300242, 0.953863, 0, 0, 0, 1, -22.0542, -2.34267, -0.82207 )
+
+[node name="Crowns" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="SmallCrown" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.11994, 0.949233, -1.1975 )
+
+[node name="SmallCrown2" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0568, 0.949233, -3.04457 )
+
+[node name="SmallCrown3" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01797, 0.949233, -0.627569 )
+
+[node name="SmallCrown4" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.361, 4.08887, -3.67542 )
+
+[node name="SmallCrown5" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31101, 1.02662, -1.72438 )
+
+[node name="SmallCrown6" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4996, 1.02662, -0.496547 )
+
+[node name="SmallCrown7" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4996, 1.02662, -3.52599 )
+
+[node name="SmallCrown8" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1853, 1.02662, -1.96686 )
+
+[node name="SmallCrown9" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2826, 0.561312, -1.30891 )
+
+[node name="SmallCrown10" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2826, 1.77596, -1.30891 )
+
+[node name="SmallCrown11" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2826, 2.80901, -1.30891 )
+
+[node name="SmallCrown12" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5265, -0.501008, -2.49365 )
+
+[node name="SmallCrown13" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5265, 2.12086, -2.49365 )
+
+[node name="Alien" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5084, 1.41454, -1.64542 )
+
+[node name="Climb" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9885, 0, 0 )
+
+[node name="Pillar1" parent="Climb" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-008, 0, 0.5, 0, 0.25, 0, -0.5, 0, -2.18557e-008, -14.3955, 0.569701, -1.41883 )
+
+[node name="Platform" parent="Climb/Pillar1" instance=ExtResource( 11 )]
+transform = Transform( -8.74228e-008, 0, -2, 0, 2, 0, 2, 0, -8.74228e-008, -2.52666, 4.49296, 14.8099 )
+
+[node name="Platform2" parent="Climb/Pillar1" instance=ExtResource( 11 )]
+transform = Transform( 1.6, 0, 0, 0, 1, 0, 0, 0, 1.3, 1.09635, 21.9038, 15.5505 )
+
+[node name="Platform3" parent="Climb/Pillar1" instance=ExtResource( 11 )]
+transform = Transform( 1.6, 0, 7.10543e-015, 0, 1, 0, 0, 0, 1.3, 1.21232, 31.4938, 13.8336 )
+
+[node name="Pillar2" parent="Climb" instance=ExtResource( 12 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.50924, 0, -6.80574 )
+
+[node name="Platform" parent="Climb/Pillar2" instance=ExtResource( 11 )]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 2, 0.274551, 8.65305, 7.86619 )
+
+[node name="Platform2" parent="Climb/Pillar2" instance=ExtResource( 11 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 2, -1.74024, 29.268, 9.13952 )
+script = SubResource( 2 )
+
+[node name="Platform3" parent="Climb/Pillar2" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 2.63045, 40.6415, 8.36271 )
+
+[node name="Platform4" parent="Climb/Pillar2" instance=ExtResource( 11 )]
+transform = Transform( 2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 2.35652, 52.1275, 7.62378 )
+
+[node name="Pillar3" parent="Climb" instance=ExtResource( 13 )]
+transform = Transform( -2.18557e-008, 0, 0.5, 0, 0.38, 0, -0.5, 0, -2.18557e-008, -13.3941, 0.674243, -2.76117 )
+
+[node name="Platform" parent="Climb/Pillar3" instance=ExtResource( 11 )]
+transform = Transform( -8.74228e-008, 0, -2, 0, 2, 0, 2, 0, -8.74228e-008, -2.05679, 2.28805, 23.8138 )
+
+[node name="Platform2" parent="Climb/Pillar3" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.913721, 29.3197, 24.7213 )
+
+[node name="Platform3" parent="Climb/Pillar3" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-008, 0, -2, 0, 1.316, 0, 1, 0, -8.74228e-008, -1.05038, 42.7945, 24.8229 )
+script = SubResource( 3 )
+
+[node name="Platform4" parent="Climb/Pillar3" instance=ExtResource( 11 )]
+transform = Transform( -6.99382e-008, 0, -2, 0, 1, 0, 1.6, 0, -8.74228e-008, -3.22269, 55.3619, 26.2462 )
+
+[node name="Platform5" parent="Climb/Pillar3" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-008, 0, -1.3, 0, 0.3, 0, 1, 0, -5.68248e-008, -1.49178, 59.1532, 24.5358 )
+
