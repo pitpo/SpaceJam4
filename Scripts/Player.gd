@@ -4,6 +4,8 @@ onready var crown = $Crown
 onready var crown_origin = $Crown.translation
 onready var animator = $PlayerModel/AnimationPlayer
 
+var crowns = 4
+
 var velocity = Vector3()
 var jump_strength = 8
 var dir = 1
@@ -28,6 +30,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("player_crown_used"):
 		use_crown()
+	if Input.is_action_just_released("player_crown_used"):
+		disable_jetpack()
 
 func _physics_process(delta):
 	if dead: return
@@ -75,9 +79,9 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventKey:
-		if event.pressed and event.scancode >= 49 and event.scancode < 52 and has_node("Crown"):
+		if event.pressed and event.scancode >= 49 and event.scancode < 49 + crowns and has_node("Crown"):
 			equipped_crown = event.scancode - 49
-			for i in 3:
+			for i in crowns:
 				$Crown.get_child(i).visible = (equipped_crown == i)
 
 func use_crown():
@@ -92,6 +96,14 @@ func use_crown():
 				$Crown.throw(dir)
 			else:
 				crown.teleport()
+		System.CROWN.JETPACK:
+			enable_jetpack()
+
+func enable_jetpack():
+	$Crown/Crown4/Particles.visible = true
+
+func disable_jetpack():
+	$Crown/Crown4/Particles.visible = false
 
 func animation_end(anim):
 	if anim == "start_jump":

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ufo_fly.wav-58dc7bf9571b27f9487ff8128bd32086.sample"
+
+[deps]
+
+source_file="res://Berys/Muzyka/Don_t Stop/ufo_fly.wav"
+dest_files=[ "res://.import/ufo_fly.wav-58dc7bf9571b27f9487ff8128bd32086.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

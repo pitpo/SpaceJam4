@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hero_death.wav-497c70fbde4c66611e60dd9b24688431.sample"
+
+[deps]
+
+source_file="res://Berys/Muzyka/Don_t Stop/hero_death.wav"
+dest_files=[ "res://.import/hero_death.wav-497c70fbde4c66611e60dd9b24688431.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
