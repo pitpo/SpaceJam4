@@ -24,7 +24,7 @@ func _physics_process(delta):
 			if randi() % 100 == 0:
 				walk *= -1
 			
-			if randi() % 300 == 0:
+			if randi() % 200 == 0:
 				mode = "attack"
 				animator.playback_speed = 1
 				
@@ -48,6 +48,10 @@ func on_animation_end(anim_name):
 		get_parent().add_child(tfu)
 		tfu.translation = translation + Vector3(-1, 1, 0)
 		
+		animator.playback_speed = 4
+		animator.play("Walk")
+		mode = "walk"
+	elif anim_name == "Spike":
 		animator.playback_speed = 4
 		animator.play("Walk")
 		mode = "walk"
