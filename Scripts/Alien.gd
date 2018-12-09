@@ -43,6 +43,7 @@ func _physics_process(delta):
 			else:
 				$Alien/AnimationPlayer.play("ArmatureAction")
 				$CollisionShape/AnimationPlayer.play("attac")
+				$Attack.play()
 				damage_cooldown = 0.6
 		else:
 			rotation.y = -(Vector2(System.player.translation.x, System.player.translation.z) - Vector2(translation.x, translation.z)).rotated(-PI/2).angle()

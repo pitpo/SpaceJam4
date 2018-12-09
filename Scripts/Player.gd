@@ -103,6 +103,8 @@ func use_crown():
 				$Crown.boomerang(dir)
 		System.CROWN.SLOWDOWN:
 			System.slow_down = !System.slow_down
+			if System.slow_down:
+				$Crown/Crown3/Ice.play()
 		System.CROWN.TELEPORTATION:
 			if has_node("Crown"):
 				$Crown.throw(dir)
@@ -113,6 +115,7 @@ func use_crown():
 
 func enable_jetpack():
 	$Crown/Crown4/Particles.visible = true
+	$Crown/Crown4/Fire.play()
 	if !jetpack:
 		jetpack = 1
 
