@@ -36,9 +36,8 @@ func _physics_process(delta):
 	velocity.z *= 0.9
 	
 	var move_x = int(Input.is_action_pressed("player_move_right")) - int(Input.is_action_pressed("player_move_left"))
-	velocity.x += move_x
 	var move_z = int(Input.is_action_pressed("player_move_backward")) - int(Input.is_action_pressed("player_move_forward"))
-	velocity.z += move_z
+	velocity += Vector3(move_x, 0, move_z).normalized() * 0.85
 	
 	var walking = false
 	if move_x > 0:
