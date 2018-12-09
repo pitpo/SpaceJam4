@@ -10,7 +10,7 @@ var dir = 1
 var jumping = false
 var dead = false
 
-var equipped_crown = System.CROWN.BOOMEARNG
+var equipped_crown = System.CROWN.BOOMERANG
 
 var was_on_floor = false
 

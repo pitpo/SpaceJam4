@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Nodes/UFOEnemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Models/Platform.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Models/Platform2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Models/Tree.tscn" type="PackedScene" id=7]
 
 [sub_resource type="GDScript" id=1]
 
@@ -44,4 +45,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0353, -0.428, -2.47818 )
 
 [node name="Platform2" parent="Platforms" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0226, -0.271341, -3.45323 )
+
+[node name="Tree" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57252, -1.68731, -0.82207 )
 
