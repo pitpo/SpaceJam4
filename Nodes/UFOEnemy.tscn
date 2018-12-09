@@ -26,6 +26,7 @@ aabb = AABB( -1, -1, -5.60879, 2, 2, 9.8084 )
 [node name="RayCast" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, -10, 0 )
+collision_mask = 7
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161492, 0 )

@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Nodes/Pillar1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Nodes/Pillar2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/Modules/Platform.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Nodes/Pillar2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Nodes/Pillar3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/BigCrown.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Models/Crown4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/Pillar1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Nodes/SmallCrown.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Pillar3.tscn" type="PackedScene" id=7]
 
-
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Spatial
 
@@ -21,7 +23,7 @@ func _physics_process(delta):
 	
 	translation.y = initial_pos + sin(timer) * 3"
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Spatial
 
@@ -39,50 +41,87 @@ func _physics_process(delta):
 [node name="Climb" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9885, 0, 0 )
 
-[node name="Pillar1" type="Spatial" parent="." instance=ExtResource( 1 )]
+[node name="Pillar4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 1.27898e-013, 0, 1, 0, -1.27898e-013, 0, 1, 18.0659, -10.8872, -7.12609 )
+
+[node name="Platform" parent="Pillar4" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0.959457, 36.9572, 5.12138 )
+
+[node name="Pillar5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 1.27898e-013, 0, 1, 0, -1.27898e-013, 0, 1, 26.8935, -10.8872, -13.5414 )
+
+[node name="Platform" parent="Pillar5" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0.959457, 34.3721, 8.67857 )
+
+[node name="Pillar6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 1.27898e-013, 0, 1, 0, -1.27898e-013, 0, 1, 45.9363, -10.8872, -11.8235 )
+
+[node name="Platform" parent="Pillar6" instance=ExtResource( 2 )]
+transform = Transform( 1.7296, 0, 1.00423, 0, 1, 0, -1.00423, 0, 1.7296, 2.65643, 27.4736, 8.67857 )
+
+[node name="Pillar7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 1.27898e-013, 0, 1, 0, -1.27898e-013, 0, 1, 66.8622, -10.8872, -6.32542 )
+
+[node name="Platform" parent="Pillar7" instance=ExtResource( 2 )]
+transform = Transform( 2.42477, 0, 1.40785, 0, 1, 0, -1.00423, 0, 1.7296, 0.683197, 15.8122, 4.58444 )
+
+[node name="BigCrown" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.27898e-013, 0, 1, 0, -1.27898e-013, 0, 1, 3.18344, 26.9195, -2.51258 )
+crown = ExtResource( 4 )
+
+[node name="Pillar1" parent="." instance=ExtResource( 5 )]
 transform = Transform( -2.18557e-008, 0, 0.5, 0, 0.25, 0, -0.5, 0, -2.18557e-008, -14.3955, 0.569701, -1.41883 )
 
-[node name="Platform" type="Spatial" parent="Pillar1" instance=ExtResource( 2 )]
+[node name="Platform" parent="Pillar1" instance=ExtResource( 2 )]
 transform = Transform( -8.74228e-008, 0, -2, 0, 2, 0, 2, 0, -8.74228e-008, -2.52666, 4.49296, 14.8099 )
 
-[node name="Platform2" type="Spatial" parent="Pillar1" instance=ExtResource( 2 )]
+[node name="Platform2" parent="Pillar1" instance=ExtResource( 2 )]
 transform = Transform( 1.6, 0, 0, 0, 1, 0, 0, 0, 1.3, 1.09635, 21.9038, 15.5505 )
 
-[node name="Platform3" type="Spatial" parent="Pillar1" instance=ExtResource( 2 )]
+[node name="Platform3" parent="Pillar1" instance=ExtResource( 2 )]
 transform = Transform( 1.6, 0, 7.10543e-015, 0, 1, 0, 0, 0, 1.3, 1.21232, 31.4938, 13.8336 )
 
-[node name="Pillar2" type="Spatial" parent="." instance=ExtResource( 3 )]
+[node name="SmallCrown" parent="Pillar1" instance=ExtResource( 6 )]
+transform = Transform( -8.74228e-008, 0, -2, 0, 4, 0, 2, 0, -8.74228e-008, 0.0692115, 71.073, 14.5771 )
+
+[node name="Pillar2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.50924, 0, -6.80574 )
 
-[node name="Platform" type="Spatial" parent="Pillar2" instance=ExtResource( 2 )]
+[node name="Platform" parent="Pillar2" instance=ExtResource( 2 )]
 transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 2, 0.274551, 8.65305, 7.86619 )
 
-[node name="Platform2" type="Spatial" parent="Pillar2" instance=ExtResource( 2 )]
+[node name="Platform2" parent="Pillar2" instance=ExtResource( 2 )]
 transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 2, -1.74024, 29.268, 9.13952 )
-script = SubResource( 2 )
+script = SubResource( 1 )
 
-[node name="Platform3" type="Spatial" parent="Pillar2" instance=ExtResource( 2 )]
+[node name="Platform3" parent="Pillar2" instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 2.63045, 40.6415, 8.36271 )
 
-[node name="Platform4" type="Spatial" parent="Pillar2" instance=ExtResource( 2 )]
+[node name="Platform4" parent="Pillar2" instance=ExtResource( 2 )]
 transform = Transform( 2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 2.35652, 52.1275, 7.62378 )
 
-[node name="Pillar3" type="Spatial" parent="." instance=ExtResource( 4 )]
+[node name="Pillar3" parent="." instance=ExtResource( 7 )]
 transform = Transform( -2.18557e-008, 0, 0.5, 0, 0.38, 0, -0.5, 0, -2.18557e-008, -13.3941, 0.674243, -2.76117 )
 
-[node name="Platform" type="Spatial" parent="Pillar3" instance=ExtResource( 2 )]
+[node name="SmallCrown2" parent="Pillar3" instance=ExtResource( 6 )]
+transform = Transform( -8.74226e-008, 0, -2, 0, 2.63158, 0, 2, 0, -8.74226e-008, -1.63652, 70.8848, 26.4789 )
+
+[node name="SmallCrown3" parent="Pillar3" instance=ExtResource( 6 )]
+transform = Transform( -8.74225e-008, 0, -2, 0, 2.63158, 0, 2, 0, -8.74225e-008, -2.35774, 4.10752, 23.37 )
+
+[node name="Platform" parent="Pillar3" instance=ExtResource( 2 )]
 transform = Transform( -8.74228e-008, 0, -2, 0, 2, 0, 2, 0, -8.74228e-008, -2.05679, 2.28805, 23.8138 )
 
-[node name="Platform2" type="Spatial" parent="Pillar3" instance=ExtResource( 2 )]
+[node name="Platform2" parent="Pillar3" instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.913721, 29.3197, 24.7213 )
 
-[node name="Platform3" type="Spatial" parent="Pillar3" instance=ExtResource( 2 )]
+[node name="Platform3" parent="Pillar3" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-008, 0, -2, 0, 1.316, 0, 1, 0, -8.74228e-008, -1.05038, 42.7945, 24.8229 )
-script = SubResource( 3 )
+script = SubResource( 2 )
 
-[node name="Platform4" type="Spatial" parent="Pillar3" instance=ExtResource( 2 )]
+[node name="Platform4" parent="Pillar3" instance=ExtResource( 2 )]
 transform = Transform( -6.99382e-008, 0, -2, 0, 1, 0, 1.6, 0, -8.74228e-008, -3.22269, 55.3619, 26.2462 )
 
-[node name="Platform5" type="Spatial" parent="Pillar3" instance=ExtResource( 2 )]
+[node name="Platform5" parent="Pillar3" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-008, 0, -1.3, 0, 0.3, 0, 1, 0, -5.68248e-008, -1.49178, 59.1532, 24.5358 )
 

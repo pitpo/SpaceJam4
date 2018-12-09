@@ -4,7 +4,7 @@ onready var crown = $Crown
 onready var crown_origin = $Crown.translation
 onready var animator = $PlayerModel/AnimationPlayer
 
-var crowns = 0
+var crowns = 2
 
 var velocity = Vector3()
 var jump_strength = 10
