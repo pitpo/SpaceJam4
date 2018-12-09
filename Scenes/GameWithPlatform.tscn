@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Nodes/Climb.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/IntroSection.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Models/Planet1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Cave.tscn" type="PackedScene" id=8]
 
 [sub_resource type="GDScript" id=1]
 
@@ -27,10 +28,10 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16443, 4.11762, -1.65137 )
 
 [node name="UFOEnemy" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75.8373, 26.9143, -2.60509 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75.8373, 27.0949, -2.60509 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0199, 27.5421, -2.46867 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4673, 27.5421, -2.46867 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.5, 5 )
@@ -50,5 +51,8 @@ script = SubResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="MusicChanger1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1124, 12.8668, -1.63833 )
 shape = SubResource( 2 )
+
+[node name="Cave" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 198.532, 0, -2 )
 
 [connection signal="body_entered" from="MusicChanger1" to="MusicChanger1" method="on_enter"]
