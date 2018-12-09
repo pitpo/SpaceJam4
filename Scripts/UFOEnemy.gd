@@ -4,6 +4,7 @@ var is_visible = false
 var velocity = Vector3()
 var speed = 2
 var time_to_shoot = 2
+onready var start_y = translation.y
 
 func _ready():
 	health = 1
@@ -17,12 +18,9 @@ func _physics_process(delta):
 			queue_free()
 		return
 	if is_visible:
-		var nearest_floor = $RayCast.get_collider()
-		if nearest_floor:
-			var dest_y = nearest_floor.translation.y + 2.5 + sin(OS.get_ticks_msec()*0.003) * 0.65
-			velocity.y = dest_y - translation.y
-		else:
-			velocity.y = 0
+		var dest_y = start_y + sin(OS.get_ticks_msec()*0.003) * 0.65
+		velocity.y = dest_y - translation.y
+		
 		var player_direction = sign(System.player.translation.x - translation.x)
 		velocity.x = player_direction
 		velocity.z = sign(System.player.translation.z - translation.z)

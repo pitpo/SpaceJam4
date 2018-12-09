@@ -9,7 +9,7 @@ script/source = "extends \"res://Scripts/Enemy.gd\"
 var speed = 10
 
 func _ready():
-	print(\"projectile fired \", translation.x, translation.y, translation.z)
+	get_tree().create_timer(0.15).connect(\"timeout\", $CollisionShape, \"set_disabled\", [false])
 	speed *= sign(System.player.translation.x - translation.x)
 
 func _physics_process(delta):
