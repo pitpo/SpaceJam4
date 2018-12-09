@@ -8,6 +8,8 @@ func _process(delta):
 	$Hearts.update()
 	if health == 0:
 		System.player.die()
+	
+	$IceEffect.visible = System.slow_down
 
 func add_crown():
 	crowns += 1
