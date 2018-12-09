@@ -50,7 +50,9 @@ extents = Vector3( 1.12925, 1.20842, 1.09093 )
 
 extents = Vector3( 1, 1, 0.664648 )
 
-[node name="Spider" type="KinematicBody"]
+[node name="Spider" type="KinematicBody" groups=[
+"enemies",
+]]
 script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]

@@ -1,4 +1,4 @@
-extends KinematicBody
+extends "res://Scripts/Enemy.gd"
 
 onready var animator = $"Scene Root/AnimationPlayer"
 
@@ -9,10 +9,14 @@ var is_visible = false
 
 func _ready():
 	animator.get_animation("Walk").loop = true
+	health = 20
 	
 	animator.play("Slideer")
 
 func _physics_process(delta):
+	if health == 0:
+		queue_free()
+	
 	if !is_visible: return
 	
 	var motion = Vector3()

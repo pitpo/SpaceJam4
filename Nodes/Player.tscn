@@ -191,8 +191,8 @@ anims/Rotate = SubResource( 13 )
 
 [node name="Area" type="Area" parent="Crown"]
 editor/display_folded = true
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape" type="CollisionShape" parent="Crown/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0647715, 2.0411, -0.0161929 )

@@ -60,6 +60,7 @@ func on_Area_body_entered(body):
 	if boomerang_speed:
 		boomerang_speed = 0
 		$Crown/BoomerangHit.play()
+		print(body.name)
 		
 		if body.is_in_group("enemies"):
 			body.damage()
