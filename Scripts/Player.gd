@@ -142,6 +142,7 @@ func use_crown():
 				System.slow_down = null
 		System.CROWN.TELEPORTATION:
 			if has_node("Crown") && teleport_use_timeout < 0:
+				$Crown/Crown/BoomerangFlight.play()
 				$Crown.throw(dir)
 			elif teleport_use_timeout < 0:
 				teleport_use_timeout = 2
