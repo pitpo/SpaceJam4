@@ -68,6 +68,11 @@ func on_animation_finished(anim_name):
 	if anim_name == "ArmatureAction":
 		$Alien/AnimationPlayer.play("Walk")
 
+func damage():
+	.damage()
+	$LamaHit.play()
+
 func die():
 	rotation_degrees.y = 90
 	$Alien/AnimationPlayer.play("death")
+	$Death.play()
