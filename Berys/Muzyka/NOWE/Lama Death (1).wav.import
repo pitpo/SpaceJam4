@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Lama Death (1).wav-92e3cb86e7c7f000e047e5c1db9144e8.sample"
+
+[deps]
+
+source_file="res://Berys/Muzyka/NOWE/Lama Death (1).wav"
+dest_files=[ "res://.import/Lama Death (1).wav-92e3cb86e7c7f000e047e5c1db9144e8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

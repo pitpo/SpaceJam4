@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Nodes/Modules/BlockSmall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Berys/New_DAE/Scene_block/Material.material" type="Material" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://Models/Crown.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Nodes/Modules/SingleCrystal.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Models/Crown3.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Sprites/tip2.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/tip1.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/tip3.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/tip4.png" type="Texture" id=18]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -64,6 +68,152 @@ surfaces/1 = {
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 159
+}
+
+[sub_resource type="SpatialMaterial" id=11]
+
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+albedo_texture = ExtResource( 15 )
+
+[sub_resource type="QuadMesh" id=8]
+
+material = SubResource( 11 )
+size = Vector2( 11, 1 )
+
+[sub_resource type="GDScript" id=9]
+
+script/source = "extends MeshInstance
+
+var tip_revealed = false
+
+func _on_VisibilityNotifier_camera_entered(camera):
+	if !tip_revealed:
+		$AnimationPlayer.play(\"RevealTip\")
+		tip_revealed = true"
+
+[sub_resource type="Animation" id=10]
+
+resource_name = "RevealTip"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=4]
+
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+albedo_texture = ExtResource( 16 )
+
+[sub_resource type="QuadMesh" id=5]
+
+material = SubResource( 4 )
+size = Vector2( 12, 1 )
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "UnveilTip"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=12]
+
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+albedo_texture = ExtResource( 17 )
+
+[sub_resource type="QuadMesh" id=13]
+
+material = SubResource( 12 )
+size = Vector2( 12, 2 )
+
+[sub_resource type="GDScript" id=14]
+
+script/source = "extends MeshInstance
+
+var tip_revealed = false
+
+func _on_VisibilityNotifier_camera_entered(camera):
+	if !tip_revealed:
+		$AnimationPlayer.play(\"RevealTip\")
+		tip_revealed = true
+"
+
+[sub_resource type="Animation" id=15]
+
+resource_name = "RevealTip"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=16]
+
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+albedo_texture = ExtResource( 18 )
+
+[sub_resource type="QuadMesh" id=17]
+
+material = SubResource( 16 )
+size = Vector2( 10, 1.5 )
+
+[sub_resource type="GDScript" id=19]
+
+script/source = "extends MeshInstance
+
+var tip_revealed = false
+
+func _on_VisibilityNotifier_camera_entered(camera):
+	if !tip_revealed:
+		$AnimationPlayer.play(\"RevealTip\")
+		tip_revealed = true"
+
+[sub_resource type="Animation" id=18]
+
+resource_name = "RevealTip"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="IntroSection" type="Spatial"]
@@ -542,3 +692,51 @@ transform = Transform( 1, 0, 0, 0, 1.49969, -0.0202349, 0, 0.0303524, 0.999795, 
 [node name="SmallCrown3" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03287, 3.16003, -27.357 )
 
+[node name="Tip2" type="MeshInstance" parent="."]
+transform = Transform( -3.0598e-008, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-008, -2.97023, 8.90828, 25.0483 )
+mesh = SubResource( 8 )
+material/0 = null
+script = SubResource( 9 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Tip2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08382, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tip2"]
+anims/RevealTip = SubResource( 10 )
+
+[node name="Tip1" type="MeshInstance" parent="."]
+transform = Transform( -3.0598e-008, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-008, -4.73433, 8.90828, 37.1345 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Tip1"]
+autoplay = "UnveilTip"
+anims/UnveilTip = SubResource( 6 )
+
+[node name="Tip3" type="MeshInstance" parent="."]
+transform = Transform( -2.18557e-008, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-008, -2.94693, 4.98369, 13.538 )
+mesh = SubResource( 13 )
+material/0 = null
+script = SubResource( 14 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Tip3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41485, 0, -1.43051e-006 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tip3"]
+anims/RevealTip = SubResource( 15 )
+
+[node name="Tip4" type="MeshInstance" parent="."]
+transform = Transform( -3.0598e-008, 0, 1, 0, 0.7, 0, -0.7, 0, -4.37114e-008, -2.85118, 4.59184, -12.0254 )
+mesh = SubResource( 17 )
+material/0 = null
+script = SubResource( 19 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Tip4"]
+transform = Transform( 1, 0, -7.10543e-015, 0, 1, 0, 7.10543e-015, 0, 1, 6.4933, 0, 2.38419e-007 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tip4"]
+anims/RevealTip = SubResource( 18 )
+
+[connection signal="camera_entered" from="Tip2/VisibilityNotifier" to="Tip2" method="_on_VisibilityNotifier_camera_entered"]
+[connection signal="camera_entered" from="Tip3/VisibilityNotifier" to="Tip3" method="_on_VisibilityNotifier_camera_entered"]
+[connection signal="camera_entered" from="Tip4/VisibilityNotifier" to="Tip4" method="_on_VisibilityNotifier_camera_entered"]
