@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Berys/New_DAE/Scene_block/scene_block.dae" type="PackedScene" id=1]
+[ext_resource path="res://Nodes/Modules/BlockSmall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/Modules/Crystal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Models/Tree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/Modules/Rock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Nodes/Modules/Rock2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Modules/BlockHigh.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Nodes/SmallCrown.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Nodes/BigCrown.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Models/Crown.tscn" type="PackedScene" id=10]
+
+[node name="IntroSection" index="0" instance=ExtResource( 1 )]
+
+[node name="BlockSmall" parent="." index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.699235, -0.0467273, 0, 0.0327091, 0.998908, 0.364945, 2.96924, 30.9462 )
+
+[node name="Crystal" parent="." index="4" instance=ExtResource( 3 )]
+transform = Transform( 0.552181, 0.0463423, 0.230106, -0.0820166, 0.589208, 0.0781499, -0.219931, -0.103376, 0.548584, -2.1715, 2.45988, 45.5796 )
+
+[node name="Tree" parent="." index="5" instance=ExtResource( 4 )]
+transform = Transform( -0.492323, -0.183481, -0.289747, -0.118427, 0.566683, -0.157625, 0.321859, -0.0721474, -0.5012, -2.10907, 2.856, 42.7981 )
+
+[node name="Tree2" parent="." index="6" instance=ExtResource( 4 )]
+transform = Transform( 0.407773, 0.194976, 0.394596, -0.236327, 0.55079, -0.0279351, -0.37131, -0.136437, 0.451125, 2.08254, 2.42996, 48.0067 )
+
+[node name="Rock" parent="." index="7" instance=ExtResource( 5 )]
+transform = Transform( 0.407773, 0.194976, 0.394596, -0.236327, 0.55079, -0.0279351, -0.37131, -0.136437, 0.451125, -0.260984, 3.19566, 39.2006 )
+
+[node name="Rock2" parent="." index="8" instance=ExtResource( 5 )]
+transform = Transform( 0.191928, 0.074822, -0.563529, 0.250299, 0.522901, 0.154675, 0.510406, -0.284562, 0.136053, -0.651279, 3.19566, 38.5053 )
+
+[node name="Rock3" parent="." index="9" instance=ExtResource( 5 )]
+transform = Transform( -0.137527, 0.574476, -0.105186, -0.113278, -0.132249, -0.574176, -0.572935, -0.111749, 0.138772, 0.362367, 2.80995, 38.5053 )
+
+[node name="Rock4" parent="." index="10" instance=ExtResource( 6 )]
+transform = Transform( 0.28137, 0.317412, 0.424358, 0.286178, 0.313372, -0.424147, -0.446019, 0.401307, -0.00443814, 0.49471, 2.58245, 40.0416 )
+
+[node name="BlockHigh" parent="." index="11" instance=ExtResource( 7 )]
+transform = Transform( 0.998083, 0.061884, 0, -0.061884, 0.998083, 0, 0, 0, 1, -1.67596, 3.19206, 30.8942 )
+
+[node name="Tree3" parent="." index="12" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.697257, -0.0884419, 0, 0.0619093, 0.996081, -3.08458, 2.69819, 33.0149 )
+
+[node name="Rock5" parent="." index="13" instance=ExtResource( 5 )]
+transform = Transform( 0.939899, 0.238756, -0.0159552, -0.341453, 0.65721, -0.043919, 0, 0.0327091, 0.998908, -0.71079, 4.59732, 30.3731 )
+
+[node name="SmallCrown" parent="." index="14" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 0.7, 0, 0, 0, 1, -1.84715, 6.70695, 30.2567 )
+
+[node name="Crystal2" parent="." index="15" instance=ExtResource( 3 )]
+transform = Transform( 0.74843, -0.0222056, -0.0431264, 0.0448759, 0.570106, 0.485247, 0.0184152, -0.486812, 0.570241, -2.57955, 2.00894, 29.3475 )
+
+[node name="BlockHigh2" parent="." index="16" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, -3.68145, 4.30507, 30.6676 )
+
+[node name="BlockHigh3" parent="." index="17" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, -3.68145, 4.30507, 28.8363 )
+
+[node name="BlockHigh4" parent="." index="18" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, -3.68145, 4.30507, 27.0203 )
+
+[node name="BlockHigh5" parent="." index="19" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, -3.68145, 4.30507, 25.1848 )
+
+[node name="BlockHigh6" parent="." index="20" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, -3.68145, 4.30507, 23.4189 )
+
+[node name="BlockHigh7" parent="." index="21" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, -3.68145, 4.30507, 21.5934 )
+
+[node name="BlockHigh8" parent="." index="22" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, -3.68145, 4.30507, 19.8708 )
+
+[node name="BlockHigh9" parent="." index="23" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, -3.68145, 4.30507, 18.2922 )
+
+[node name="BlockHigh10" parent="." index="24" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84029, 2.947, 21.4349 )
+
+[node name="BlockHigh11" parent="." index="25" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0256836, 3.75461, 21.4349 )
+
+[node name="BlockHigh12" parent="." index="26" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91254, 3.75461, 21.4349 )
+
+[node name="BlockHigh13" parent="." index="27" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31108, 4.84316, 21.4349 )
+
+[node name="Rock7" parent="." index="28" instance=ExtResource( 6 )]
+transform = Transform( 0.778084, -0.369117, 0.508269, 0.2851, 0.928514, 0.237865, -0.559735, -0.0401713, 0.827698, -0.548784, 3.05597, 19.5976 )
+
+[node name="BlockSmall3" parent="." index="29" instance=ExtResource( 2 )]
+transform = Transform( 0.891161, 0.453687, 0, -0.453687, 0.891161, 0, 0, 0, 1, -2.02925, 2.74415, 8.6751 )
+
+[node name="BlockSmall4" parent="." index="30" instance=ExtResource( 2 )]
+transform = Transform( 0.981479, -0.19157, 0, 0.19157, 0.981479, 0, 0, 0, 1, 2.24628, 2.43218, 8.8607 )
+
+[node name="BigCrown" parent="." index="31" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193253, 3.21277, 14.2483 )
+crown = ExtResource( 10 )
+
+[node name="Rock8" parent="." index="32" instance=ExtResource( 6 )]
+transform = Transform( 0.0336608, 0.987834, 0.151826, -0.637006, 0.138262, -0.758358, -0.770123, -0.0711868, 0.63391, 1.5426, 2.28411, 19.5976 )
+
+[node name="Rock6" parent="." index="33" instance=ExtResource( 5 )]
+transform = Transform( 0.712958, -0.371297, 0.594835, 0.2851, 0.928514, 0.237864, -0.640632, 0, 0.767848, -2.36056, 3.54969, 19.3871 )
+
+[node name="SmallCrown2" parent="." index="34" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03512, 8.2414, 20.9192 )
+
+[node name="BlockSmall2" parent="." index="35" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04611, 3.19206, 23.3946 )
+
