@@ -13,6 +13,10 @@ func throw(dir):
 	add_force(Vector3(dir * 300, 300, 0), Vector3())
 
 func teleport():
+	var fx = preload("res://Nodes/TeleportFX.tscn").instance()
+	fx.translation = translation + Vector3.UP * 2
+	get_parent().add_child(fx)
+	
 	System.player.translation = translation + Vector3.UP * 2
 	System.reparent(self, System.player)
 	translation = System.player.crown_origin
@@ -40,6 +44,8 @@ func _physics_process(delta):
 				translation += to_target.normalized() * 10 * delta
 
 func on_Area_body_entered(body):
-	if body.is_in_group("enemies") && boomerang_speed != 0:
-		body.damage()
-	boomerang_speed = 0
+	if boomerang_speed:
+		boomerang_speed = 0
+		
+		if body.is_in_group("enemies"):
+			body.damage()

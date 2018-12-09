@@ -4,6 +4,8 @@ var is_visible = false
 var speed = 3
 var velocity = Vector3()
 var damage_cooldown = 0
+var dead_countdown = 0.3
+var dead_countdown_helper = 0.3
 
 func _ready():
 	$Alien/AnimationPlayer.playback_speed = 3
@@ -12,8 +14,15 @@ func _ready():
 
 func _physics_process(delta):
 	if health == 0:
+		$CollisionShape.disabled = true
 		$Alien/AnimationPlayer.playback_speed = 2 * System.time_scale()
 		if !$Alien/AnimationPlayer.is_playing():
+			dead_countdown -= delta
+			if dead_countdown < 0:
+				dead_countdown_helper /= 1.5
+				dead_countdown = dead_countdown_helper
+				visible = !visible
+		if dead_countdown_helper < 0.05:
 			queue_free()
 		return
 	if is_visible:
@@ -52,7 +61,8 @@ func on_camera_exited(camera):
 	is_visible = false
 
 func on_animation_finished(anim_name):
-	rotation_degrees.y = sign(System.player.translation.x - translation.x) * 90
+	if health != 0:
+		rotation_degrees.y = sign(System.player.translation.x - translation.x) * 90
 	if anim_name == "ArmatureAction":
 		$Alien/AnimationPlayer.play("Walk")
 
