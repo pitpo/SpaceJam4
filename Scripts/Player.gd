@@ -130,4 +130,5 @@ func animation_end(anim):
 func die():
 	if !dead:
 		animator.play("DIE")
+		$Death.play()
 		dead = true
