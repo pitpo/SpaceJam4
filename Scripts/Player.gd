@@ -86,7 +86,7 @@ func use_crown():
 			if has_node("Crown"):
 				$Crown.boomerang(dir)
 		System.CROWN.SLOWDOWN:
-			System.emit_signal("slowdown_switched")
+			System.slow_down = !System.slow_down
 		System.CROWN.TELEPORTATION:
 			if has_node("Crown"):
 				$Crown.throw(dir)

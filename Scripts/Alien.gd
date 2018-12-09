@@ -19,10 +19,10 @@ func _physics_process(delta):
 				velocity = velocity.normalized()
 				velocity += Vector3.DOWN * 30 * delta
 				if player_direction < 0 && rotation_degrees.y > -90:
-					rotation_degrees.y -= delta * 300 * speed
+					rotation_degrees.y -= delta * 300 * speed * System.time_scale()
 				elif player_direction > 0 && rotation_degrees.y < 90:
-					rotation_degrees.y += delta * 300 * speed
-				move_and_slide(velocity * speed, Vector3.UP)
+					rotation_degrees.y += delta * 300 * speed * System.time_scale()
+				move_and_slide(velocity * speed * System.time_scale(), Vector3.UP)
 			else:
 				$Alien/AnimationPlayer.play("ArmatureAction")
 				$CollisionShape/AnimationPlayer.play("attac")
@@ -42,12 +42,6 @@ func on_camera_entered(camera):
 
 func on_camera_exited(camera):
 	is_visible = false
-
-func slowdown_activated():
-	speed = 3
-
-func slowdown_disabled():
-	speed = 1.5
 
 func on_animation_finished(anim_name):
 	rotation_degrees.y = sign(System.player.translation.x - translation.x) * 90
