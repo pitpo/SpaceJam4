@@ -9,23 +9,22 @@
 [ext_resource path="res://Sprites/fire-flame.png" type="Texture" id=7]
 [ext_resource path="res://Models/Player.tscn" type="PackedScene" id=8]
 
-[sub_resource type="Gradient" id=14]
+[sub_resource type="Gradient" id=1]
 
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=15]
+[sub_resource type="GradientTexture" id=2]
 
-gradient = SubResource( 14 )
+gradient = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=16]
+[sub_resource type="ParticlesMaterial" id=3]
 
 emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3( 0, -6, 0 )
-angular_velocity = 0.0
-color_ramp = SubResource( 15 )
+color_ramp = SubResource( 2 )
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=4]
 
 flags_transparent = true
 flags_unshaded = true
@@ -35,7 +34,7 @@ albedo_texture = ExtResource( 5 )
 
 [sub_resource type="QuadMesh" id=5]
 
-material = SubResource( 9 )
+material = SubResource( 4 )
 size = Vector2( 0.1, 0.1 )
 
 [sub_resource type="Gradient" id=6]
@@ -47,15 +46,14 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 gradient = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=8]
 
 emission_shape = 1
 emission_sphere_radius = 2.0
 gravity = Vector3( 0, -100, 0 )
-angular_velocity = 0.0
 color_ramp = SubResource( 7 )
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="SpatialMaterial" id=9]
 
 flags_transparent = true
 flags_unshaded = true
@@ -63,19 +61,18 @@ vertex_color_use_as_albedo = true
 params_billboard_mode = 1
 albedo_texture = ExtResource( 7 )
 
-[sub_resource type="QuadMesh" id=11]
+[sub_resource type="QuadMesh" id=10]
 
-material = SubResource( 12 )
+material = SubResource( 9 )
 size = Vector2( 0.1, 0.1 )
 
-[sub_resource type="CylinderShape" id=1]
+[sub_resource type="CylinderShape" id=11]
 
 radius = 0.3
 height = 0.331801
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=12]
 
-resource_name = "Rotate"
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Crown:rotation_degrees")
@@ -90,7 +87,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 1.00179e-005, 0 ), Vector3( 0, 360, 0 ) ]
 }
 
-[sub_resource type="CylinderShape" id=3]
+[sub_resource type="CylinderShape" id=13]
 
 radius = 0.282473
 
@@ -114,7 +111,7 @@ visible = false
 [node name="Particles" type="Particles" parent="Crown/Crown2"]
 transform = Transform( 1, 0, 2.71051e-020, 0, 1, 0, -2.71051e-020, 0, 1, 0, 0.84859, 0 )
 lifetime = 0.5
-process_material = SubResource( 16 )
+process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 5 )
 
 [node name="Crown3" parent="Crown" instance=ExtResource( 6 )]
@@ -130,15 +127,23 @@ transform = Transform( 1, 0, -1.74846e-007, 0, 1, 0, 1.74846e-007, 0, 1, 0, -1.1
 visible = false
 amount = 50
 lifetime = 0.3
-process_material = SubResource( 10 )
-draw_pass_1 = SubResource( 11 )
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Crown"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0647715, 2.0411, -0.0161929 )
-shape = SubResource( 1 )
+shape = SubResource( 11 )
 
 [node name="Boomerang" type="AnimationPlayer" parent="Crown"]
-anims/Rotate = SubResource( 2 )
+anims/Rotate = SubResource( 12 )
+
+[node name="Area" type="Area" parent="Crown"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Crown/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0647715, 2.0411, -0.0161929 )
+shape = SubResource( 11 )
 
 [node name="PlayerModel" parent="." instance=ExtResource( 8 )]
 editor/display_folded = true
@@ -146,7 +151,8 @@ transform = Transform( -1.31134e-008, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-008,
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004, 0.955, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 13 )
 
+[connection signal="body_entered" from="Crown/Area" to="Crown" method="on_Area_body_entered"]
 
 [editable path="PlayerModel"]

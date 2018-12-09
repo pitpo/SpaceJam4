@@ -12,6 +12,7 @@ func _ready():
 
 func _physics_process(delta):
 	if health == 0:
+		$Alien/AnimationPlayer.playback_speed = 2 * System.time_scale()
 		if !$Alien/AnimationPlayer.is_playing():
 			queue_free()
 		return
