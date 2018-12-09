@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=2]
@@ -31,6 +31,15 @@ func on_enter(body):
 	if body == System.player:
 		System.game.ui.change_music(\"res://Music/theme.ogg\")"
 
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Node
+
+func _process(delta):
+	if !has_node(\"../Alien\"):
+		$\"../IntroSection/BigCrown2/AnimationPlayer\".play(\"Nowa animacja\")
+		queue_free()"
+
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -41,7 +50,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16443, 4.11762, -1.65137 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75.8373, 27.0949, -2.60509 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4673, 27.5421, -2.46867 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.4027, 3.64535, -2.46867 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.5, 5 )
@@ -86,6 +95,9 @@ transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 104.7
 
 [node name="SmallCrown3" parent="." instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 123.058, 5.71301, -1.07954 )
+
+[node name="Node" type="Node" parent="."]
+script = SubResource( 4 )
 
 [connection signal="body_entered" from="MusicChanger1" to="MusicChanger1" method="on_enter"]
 [connection signal="body_entered" from="MusicChanger2" to="MusicChanger2" method="on_enter"]

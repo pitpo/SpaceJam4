@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/platform_impact.wav-a92f87fdda43b884012e20e394ee1b07.sample"
+
+[deps]
+
+source_file="res://Berys/Muzyka/Platformy/platform_impact.wav"
+dest_files=[ "res://.import/platform_impact.wav-a92f87fdda43b884012e20e394ee1b07.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -79,7 +79,7 @@ func _physics_process(delta):
 	elif move_x < 0:
 		dir = -1
 		walking = true
-	target_rotation = rad2deg(Vector2(move_z, move_x).angle())
+	if move_x != 0 or move_z != 0: target_rotation = rad2deg(Vector2(move_z, move_x).angle())
 	
 	$PlayerModel.rotation_degrees.y += (target_rotation - $PlayerModel.rotation_degrees.y)/10
 	
