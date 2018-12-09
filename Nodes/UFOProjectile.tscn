@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Berys/New_DAE/Ufo/Material_003.material" type="Material" id=1]
 
@@ -8,13 +8,16 @@ script/source = "extends \"res://Scripts/Enemy.gd\"
 
 var speed = 10
 
+
 func _ready():
 	print(\"projectile fired \", translation.x, translation.y, translation.z)
 	speed *= sign(System.player.translation.x - translation.x)
+	get_tree().create_timer(0.2).connect(\"timeout\", $CollisionShape, \"set_disabled\", [false])
 
 func _physics_process(delta):
 	var velocity = Vector3()
 	velocity.x = delta * speed * System.time_scale()
+	
 	var hit = move_and_collide(velocity)
 	if hit:
 		print(\"projectile hit something \")
@@ -29,6 +32,9 @@ func on_camera_exited(camera):
 
 material = ExtResource( 1 )
 
+[sub_resource type="SphereShape" id=3]
+
+
 [node name="UFO Projectile" type="KinematicBody"]
 script = SubResource( 1 )
 
@@ -39,6 +45,8 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = true
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
