@@ -13,7 +13,7 @@ var jumping = false
 var dead = false
 var jetpack = false
 var target_rotation = 90
-var teleport_use_timeout = 2
+var teleport_use_timeout = 0.6
 
 var equipped_crown = System.CROWN.BOOMERANG
 
@@ -146,7 +146,7 @@ func use_crown():
 				$Crown/Crown/BoomerangFlight.play()
 				$Crown.throw(dir)
 			elif teleport_use_timeout < 0:
-				teleport_use_timeout = 2
+				teleport_use_timeout = 1
 				crown.teleport()
 		System.CROWN.JETPACK:
 			enable_jetpack()

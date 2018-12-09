@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Berys/New_DAE/Cave/cave.dae" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/Modules/Cave Platform.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Nodes/Modules/Cave Crystal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/Modules/Stalagmite.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Nodes/Modules/Rock.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=11]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -119,7 +118,7 @@ transform = Transform( 1.3621, 0.794885, -1.29745, -0.286347, 2.85351, 0.970221,
 transform = Transform( 0.500083, -0.723498, -0.475886, 0.524113, 0.690327, -0.498753, 0.689364, 0, 0.724415, -1.00292, 0.715309, -2.05581 )
 
 [node name="Cave Crystal" parent="." index="15" instance=ExtResource( 8 )]
-transform = Transform( -0.927374, 0, 0.374135, 0, 1, 0, -0.374135, 0, -0.927374, -1.33453, 19.9707, 59.0008 )
+transform = Transform( -0.927374, 0, 0.374135, 0, 1, 0, -0.374135, 0, -0.927374, -2.96375, 19.9707, 59.0008 )
 
 [node name="Stalagmite" parent="." index="16" instance=ExtResource( 9 )]
 transform = Transform( 0.952965, -0.28644, 0.396146, 0.284906, 0.958098, 0.118435, -0.103368, 0, 3.97857, -3.33235, 4.69429, -9.40441 )
@@ -179,11 +178,5 @@ transform = Transform( 0.876702, -0.114686, 0.0374672, -0.0594484, -0.0389034, 0
 transform = Transform( 3.85305, 0.50998, 0.337173, -0.192072, -0.125693, 2.95536, 1.04268, -1.92648, -0.259972, -2.53711, 3.84041, 19.4137 )
 
 [node name="Cave Rock5" parent="." index="35" instance=ExtResource( 6 )]
-transform = Transform( 3.67382, 1.53832, 0.369621, 0, -0.934504, 3.88931, 1.5821, -3.57215, -0.8583, -2.99295, 5.44224, -4.48726 )
-
-[node name="Alien" parent="." index="36" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35034, 3.94506, 3.97138 )
-
-[node name="Alien2" parent="." index="37" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526026, 3.94506, 3.97138 )
+transform = Transform( 3.67382, 1.53832, 0.369621, 0, -0.934504, 3.88931, 1.5821, -3.57215, -0.8583, -3.18961, 5.73894, -4.85088 )
 

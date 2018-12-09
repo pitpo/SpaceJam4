@@ -85,7 +85,7 @@ shape = SubResource( 2 )
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 198.532, 0, -2 )
 
 [node name="Spider" parent="." instance=ExtResource( 9 )]
-transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 249.727, 3.61608, -2.471 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 230.918, 3.61608, -2.471 )
 
 [node name="SmallCrown" parent="." instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 84.024, 23.9227, -4.42871 )
@@ -98,6 +98,12 @@ transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 123.0
 
 [node name="Node" type="Node" parent="."]
 script = SubResource( 4 )
+
+[node name="UFOEnemy2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.00349922, 0, -0.999994, 0, 1, 0, 0.999994, 0, 0.00349922, 31.2834, 4.86717, -1.02708 )
+
+[node name="Alien2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.00349922, 0, -0.999994, 0, 1, 0, 0.999994, 0, 0.00349922, 185.505, 4.11409, -2.92892 )
 
 [connection signal="body_entered" from="MusicChanger1" to="MusicChanger1" method="on_enter"]
 [connection signal="body_entered" from="MusicChanger2" to="MusicChanger2" method="on_enter"]
