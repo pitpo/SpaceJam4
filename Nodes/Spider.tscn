@@ -1,8 +1,44 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Models/Spider.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Spider.gd" type="Script" id=1]
+[ext_resource path="res://Models/Spider.tscn" type="PackedScene" id=2]
 
-[node name="Spatial" type="Spatial"]
+[sub_resource type="CylinderMesh" id=1]
 
-[node name="Scene Root" parent="." instance=ExtResource( 1 )]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
 
+[sub_resource type="Animation" id=2]
+
+resource_name = "Ziuuu"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Nitka:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 31.5556, 1.10789 ), Vector3( 0, 30.075, 1.108 ), Vector3( 0, 27.79, 1.108 ), Vector3( 0, 19.098, 1.108 ), Vector3( 0, 14.712, 1.10789 ) ]
+}
+
+[node name="Spider" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="Scene Root" parent="." instance=ExtResource( 2 )]
+
+[node name="Nitka" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 20, 0, 0, 0, 1, 0, 19.098, 1.108 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Ziuuu"
+anims/Ziuuu = SubResource( 2 )
+
+
+[editable path="Scene Root"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
@@ -10,8 +10,7 @@
 [ext_resource path="res://Nodes/SmallCrown.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Nodes/Climb.tscn" type="PackedScene" id=10]
-
-
+[ext_resource path="res://Nodes/Spider.tscn" type="PackedScene" id=11]
 
 [sub_resource type="GDScript" id=1]
 
@@ -110,4 +109,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5265, 2.12086, -2.49365 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5084, 1.41454, -1.64542 )
 
 [node name="Climb" parent="." instance=ExtResource( 10 )]
+
+[node name="Spider" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.90014, 0.263282, -1.79289 )
 
