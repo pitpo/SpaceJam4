@@ -123,6 +123,7 @@ align = 2
 valign = 1
 
 [node name="IceEffect" type="TextureRect" parent="UI"]
+editor/display_folded = true
 visible = false
 self_modulate = Color( 0.521569, 0.941176, 1, 0.321569 )
 anchor_right = 1.0

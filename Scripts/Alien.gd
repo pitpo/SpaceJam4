@@ -11,6 +11,8 @@ func _ready():
 
 func _physics_process(delta):
 	if is_visible:
+		$Alien/AnimationPlayer.playback_speed = 3 * System.time_scale()
+		
 		if $Alien/AnimationPlayer.current_animation != "ArmatureAction":
 			if abs(System.player.translation.x - translation.x) > 1 || abs(System.player.translation.y - translation.y) > 0.5:
 				var player_direction = sign(System.player.translation.x - translation.x)

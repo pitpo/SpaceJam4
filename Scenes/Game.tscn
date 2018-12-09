@@ -15,14 +15,17 @@
 script/source = "extends Spatial
 
 var positions = []
+var timer = 0
 
 func _ready():
 	for platform in get_children():
 		positions.append(platform.translation.y)
 
 func _physics_process(delta):
+	timer += delta * System.time_scale()
+	
 	for i in get_child_count():
-		get_child(i).translation.y = positions[i] + sin(OS.get_ticks_msec() * 0.001) * 2 * (i%2*2-1)"
+		get_child(i).translation.y = positions[i] + sin(timer) * 2 * (i%2*2-1)"
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -50,7 +53,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0353, -0.428, -2.47818 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0226, -0.271341, -3.45323 )
 
 [node name="Tree" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57252, -1.68731, -0.82207 )
+transform = Transform( 0.958848, 0.283921, 0, -0.283921, 0.958848, 0, 0, 0, 1, -3.7797, -2.34267, -0.82207 )
+
+[node name="Tree3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.0755477, 0.0223702, 0.996891, -0.283921, 0.958848, 0, -0.955867, -0.283038, 0.0787901, 12.5167, -2.34267, -4.04197 )
+
+[node name="Tree2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.953863, -0.300242, 0, 0.300242, 0.953863, 0, 0, 0, 1, -22.0542, -2.34267, -0.82207 )
 
 [node name="Crowns" type="Spatial" parent="."]
 editor/display_folded = true
