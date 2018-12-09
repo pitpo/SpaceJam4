@@ -770,6 +770,15 @@ anims/RevealTip = SubResource( 18 )
 [node name="Platform" parent="." instance=ExtResource( 19 )]
 transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, -0.64907, 12.0213, -47.8685 )
 
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.0296004, 0.909794, 0.414003, -0.667268, -0.326369, 0.669505, 0.744229, -0.256433, 0.616737, 0, 26.4388, 0 )
+layers = 7
+light_energy = 1.5
+light_indirect_energy = 5.0
+light_bake_mode = 2
+shadow_enabled = true
+shadow_color = Color( 0.160784, 0.0627451, 0.203922, 1 )
+
 [connection signal="camera_entered" from="Tip2/VisibilityNotifier" to="Tip2" method="_on_VisibilityNotifier_camera_entered"]
 [connection signal="camera_entered" from="Tip3/VisibilityNotifier" to="Tip3" method="_on_VisibilityNotifier_camera_entered"]
 [connection signal="camera_entered" from="Tip4/VisibilityNotifier" to="Tip4" method="_on_VisibilityNotifier_camera_entered"]
