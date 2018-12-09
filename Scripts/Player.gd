@@ -40,6 +40,12 @@ func _process(delta):
 	if Input.is_action_just_pressed("previous_crown"):
 		set_crown(-1)
 	
+	if $RayCast.get_collider():
+		$RayCast.visible = true
+		$RayCast/Shade.global_transform.origin.y = $RayCast.get_collision_point().y+0.1
+	else:
+		$RayCast.visible = false
+	
 func _physics_process(delta):
 	if dead: return
 	
@@ -99,10 +105,12 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventKey:
-		if event.pressed and event.scancode >= 49 and event.scancode < 49 + crowns and has_node("Crown"):
+		if event.pressed and event.scancode >= 49 and event.scancode < 49 + crowns:
 			set_crown(event.scancode - 49)
 
 func set_crown(j):
+	if !has_node("Crown"): return
+	
 	if j < 0:
 		equipped_crown -= 1
 		if equipped_crown < 0: equipped_crown = crowns-1
