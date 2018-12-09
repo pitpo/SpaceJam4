@@ -3,6 +3,7 @@ extends CanvasLayer
 var max_health = 5
 var health = 5
 var crowns = 0
+var next_music
 
 func _process(delta):
 	$Hearts.update()
@@ -23,3 +24,13 @@ func add_crown():
 func damage():
 	System.player.get_node("Attack").play()
 	health -= 1
+
+func change_music(stream):
+	next_music = load(stream)
+	$"../Music/AnimationPlayer".play("FadeOut")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "FadeOut":
+		$"../Music/AnimationPlayer".play("FadeIn")
+		$"../Music".stream = next_music
+		$"../Music".play()
