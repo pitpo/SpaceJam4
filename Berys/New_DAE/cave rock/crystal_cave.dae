@@ -5,14 +5,14 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2018-12-09T14:27:08</created>
-    <modified>2018-12-09T14:27:08</modified>
+    <created>2018-12-09T14:54:14</created>
+    <modified>2018-12-09T14:54:14</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_images/>
   <library_effects>
-    <effect id="Material_001-effect">
+    <effect id="crystal_cave-effect">
       <profile_COMMON>
         <technique sid="common">
           <phong>
@@ -43,8 +43,8 @@
     </effect>
   </library_effects>
   <library_materials>
-    <material id="Material_001-material" name="Material_001">
-      <instance_effect url="#Material_001-effect"/>
+    <material id="crystal_cave-material" name="crystal_cave">
+      <instance_effect url="#crystal_cave-effect"/>
     </material>
   </library_materials>
   <library_geometries>
@@ -73,7 +73,7 @@
         <vertices id="Icosphere-mesh-vertices">
           <input semantic="POSITION" source="#Icosphere-mesh-positions"/>
         </vertices>
-        <triangles material="Material_001-material" count="18">
+        <triangles material="crystal_cave-material" count="18">
           <input semantic="VERTEX" source="#Icosphere-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Icosphere-mesh-normals" offset="1"/>
           <p>1 0 2 0 0 0 0 1 7 1 8 1 2 2 1 2 10 2 2 3 5 3 7 3 0 4 3 4 9 4 1 5 9 5 10 5 2 6 10 6 5 6 3 7 8 7 6 7 4 8 3 8 6 8 5 9 10 9 6 9 10 10 4 10 6 10 8 11 5 11 6 11 9 12 4 12 10 12 9 13 3 13 4 13 7 14 5 14 8 14 3 15 0 15 8 15 1 16 0 16 9 16 0 17 2 17 7 17</p>
@@ -89,7 +89,7 @@
         <instance_geometry url="#Icosphere-mesh" name="Icosphere">
           <bind_material>
             <technique_common>
-              <instance_material symbol="Material_001-material" target="#Material_001-material"/>
+              <instance_material symbol="crystal_cave-material" target="#crystal_cave-material"/>
             </technique_common>
           </bind_material>
         </instance_geometry>
