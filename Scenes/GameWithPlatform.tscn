@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Nodes/Climb.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/IntroSection.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Models/Planet1.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Area
+
+func on_enter(body):
+	if body == System.player:
+		System.game.ui.change_music(\"res://Music/InTheMountains.ogg\")"
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 13.0928, 5.78194 )
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -24,3 +37,14 @@ current = true
 [node name="IntroSection" parent="." instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0, -2 )
 
+[node name="Planet" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96049, 9.00695, -136.571 )
+
+[node name="MusicChanger1" type="Area" parent="."]
+script = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MusicChanger1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1124, 12.8668, -1.63833 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="MusicChanger1" to="MusicChanger1" method="on_enter"]
