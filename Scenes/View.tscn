@@ -30,7 +30,7 @@ noise = SubResource( 2 )
 
 [sub_resource type="Gradient" id=4]
 
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+colors = PoolColorArray( 1, 1, 1, 0.25098, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=5]
 
