@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Berys/New_DAE/Scene_block/scene_block.dae" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/Modules/BlockSmall.tscn" type="PackedScene" id=2]
@@ -10,7 +10,9 @@
 [ext_resource path="res://Nodes/SmallCrown.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/BigCrown.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Models/Crown.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Nodes/Modules/SingleCrystal.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Models/Crown3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=13]
 
 [node name="IntroSection" index="0" instance=ExtResource( 1 )]
 
@@ -114,6 +116,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03512, 8.2414, 20.9192 )
 [node name="BlockSmall2" parent="." index="35" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04611, 3.19206, 23.3946 )
 
-[node name="Alien" parent="." index="36" instance=ExtResource( 11 )]
+[node name="SingleCrystal" parent="." index="36" instance=ExtResource( 11 )]
+transform = Transform( 0.246721, 0.248251, 0, -0.248251, 0.246721, 0, 0, 0, 0.35, -1.73674, 4.75794, 8.31854 )
+
+[node name="BigCrown2" parent="." index="37" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42854, 3.23262, -9.37178 )
+crown = ExtResource( 12 )
+
+[node name="SingleCrystal2" parent="." index="38" instance=ExtResource( 11 )]
+transform = Transform( 0.0954347, 0.0960265, 0.322756, -0.328346, 0.10096, 0.06705, -0.0747054, -0.32107, 0.117614, -1.73674, 4.44828, 7.77465 )
+
+[node name="Alien" parent="." index="39" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394436, 3.14312, -4.55246 )
+
+[node name="Tree6" parent="." index="40" instance=ExtResource( 4 )]
+transform = Transform( 0.934043, 0.138978, -0.296892, -0.134177, 0.6758, 0.223481, 0.330998, -0.118233, 0.928392, -3.17703, 2.67511, 4.39097 )
+
+[node name="Tree5" parent="." index="41" instance=ExtResource( 4 )]
+transform = Transform( 0.72328, 0.203062, -0.27517, -0.241805, 0.746157, -0.184317, 0.163695, 0.204975, 0.943562, 2.6368, 2.90835, 7.56006 )
+
+[node name="Tree4" parent="." index="42" instance=ExtResource( 4 )]
+transform = Transform( 0.927283, 0.253828, -0.214632, 0, 0.735036, 0.528862, 0.374362, -0.628723, 0.531637, -4.1584, 4.76084, 17.85 )
 
