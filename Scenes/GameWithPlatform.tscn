@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=2]
@@ -20,6 +20,14 @@ func on_enter(body):
 [sub_resource type="BoxShape" id=2]
 
 extents = Vector3( 1, 13.0928, 5.78194 )
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Area
+
+func on_enter(body):
+	if body == System.player:
+		System.game.ui.change_music(\"res://Music/theme.ogg\")"
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -46,9 +54,19 @@ transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96049, 9.00695, -136.571 )
 
 [node name="MusicChanger1" type="Area" parent="."]
+editor/display_folded = true
 script = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="MusicChanger1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1124, 12.8668, -1.63833 )
+shape = SubResource( 2 )
+
+[node name="MusicChanger2" type="Area" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 93.3653, 15.0882, 0 )
+script = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MusicChanger2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1124, 12.8668, -1.63833 )
 shape = SubResource( 2 )
 
@@ -56,3 +74,4 @@ shape = SubResource( 2 )
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 198.532, 0, -2 )
 
 [connection signal="body_entered" from="MusicChanger1" to="MusicChanger1" method="on_enter"]
+[connection signal="body_entered" from="MusicChanger2" to="MusicChanger2" method="on_enter"]
