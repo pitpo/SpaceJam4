@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 	camera.translation.x += (player.translation.x - camera.translation.x)/10
 	camera.translation.y += (player.translation.y + 7.5 - camera.translation.y)/10
-	camera.translation.x = max(camera.translation.x, -11)
+	camera.translation.x = max(camera.translation.x, -40)
 	camera.translation.y = max(camera.translation.y, 6)
 	paralax.get_child(1).motion_offset.x = -camera.translation.x * 10
 	paralax.get_child(2).motion_offset.x = -camera.translation.x * 20
