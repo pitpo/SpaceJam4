@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Models/Platform2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Models/Tree.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Nodes/SmallCrown.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=1]
 
@@ -92,4 +93,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5265, -0.501008, -2.49365 )
 
 [node name="SmallCrown13" parent="Crowns" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5265, 2.12086, -2.49365 )
+
+[node name="Alien" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5084, 1.41454, -1.64542 )
 

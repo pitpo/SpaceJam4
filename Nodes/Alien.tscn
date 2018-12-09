@@ -55,8 +55,10 @@ playback_speed = 2.0
 anims/attac = SubResource( 2 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
-aabb = AABB( -1, -1, -4.19936, 2, 2, 8.39872 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9414, 0 )
+aabb = AABB( -1, -1, -0.878415, 2, 2, 1.75683 )
 
+[connection signal="animation_finished" from="Alien/AnimationPlayer" to="." method="on_animation_finished"]
 [connection signal="camera_entered" from="VisibilityNotifier" to="." method="on_camera_entered"]
 [connection signal="camera_exited" from="VisibilityNotifier" to="." method="on_camera_exited"]
 
