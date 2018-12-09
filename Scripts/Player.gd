@@ -84,6 +84,7 @@ func _physics_process(delta):
 	teleport_use_timeout -= delta
 	
 	if Input.is_action_pressed("player_move_jump") and !jetpack and is_on_floor():
+		$Jump.play()
 		jumping = true
 		velocity += Vector3.UP * jump_strength
 		animator.play("start_jump")
