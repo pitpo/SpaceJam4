@@ -38,10 +38,11 @@ func _process(delta):
 	if Input.is_action_just_released("player_crown_used") and equipped_crown == System.CROWN.JETPACK:
 		disable_jetpack()
 	
-	if Input.is_action_just_pressed("next_crown"):
-		set_crown((equipped_crown + 1) % crowns)
-	if Input.is_action_just_pressed("previous_crown"):
-		set_crown(-1)
+	if crowns > 0:
+		if Input.is_action_just_pressed("next_crown"):
+			set_crown((equipped_crown + 1) % crowns)
+		if Input.is_action_just_pressed("previous_crown"):
+			set_crown(-1)
 	
 	if $RayCast.get_collider():
 		$RayCast.visible = true
