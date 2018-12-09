@@ -4,7 +4,7 @@ onready var crown = $Crown
 onready var crown_origin = $Crown.translation
 onready var animator = $PlayerModel/AnimationPlayer
 
-var crowns = 0
+var crowns = 1
 
 var velocity = Vector3()
 var jump_strength = 10
@@ -104,7 +104,7 @@ func _physics_process(delta):
 	else:
 		was_on_floor = false
 	
-	if translation.y < -20:
+	if translation.y < -10:
 		System.game.ui.health = 0
 
 func _input(event):
@@ -165,3 +165,6 @@ func die():
 		animator.play("DIE")
 		$Death.play()
 		dead = true
+
+func damage():
+	System.game.ui.damage()
