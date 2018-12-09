@@ -795,6 +795,7 @@ light_indirect_energy = 5.0
 light_bake_mode = 2
 shadow_enabled = true
 shadow_color = Color( 0.160784, 0.0627451, 0.203922, 1 )
+directional_shadow_max_distance = 20.0
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 
