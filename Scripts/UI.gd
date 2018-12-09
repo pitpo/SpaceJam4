@@ -6,7 +6,8 @@ var crowns = 0
 
 func _process(delta):
 	$Hearts.update()
-	if health == 0:
+	
+	if health <= 0:
 		System.player.die()
 	
 	if System.slow_down:
@@ -18,3 +19,7 @@ func _process(delta):
 func add_crown():
 	crowns += 1
 	$Crowns/Number.text = str(crowns)
+
+func damage():
+	System.player.get_node("Attack").play()
+	health -= 1

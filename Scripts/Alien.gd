@@ -50,7 +50,7 @@ func _physics_process(delta):
 			damage_cooldown -= delta
 			var hit = move_and_collide(Vector3())
 			if damage_cooldown < 0 && hit != null && hit.collider == System.player:
-				System.game.ui.health -= 1
+				System.player.damage()
 				damage_cooldown = 0.6
 	else:
 		velocity = Vector3()

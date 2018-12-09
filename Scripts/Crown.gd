@@ -29,7 +29,6 @@ func _physics_process(delta):
 	if boomerang_speed != null:
 		if !$Crown/BoomerangFlight.playing:
 			$Crown/BoomerangFlight.play()
-			$Attack.play()
 		var sgn = sign(boomerang_speed)
 		
 		if boomerang_speed != 0:

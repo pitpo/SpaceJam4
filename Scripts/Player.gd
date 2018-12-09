@@ -104,7 +104,7 @@ func _physics_process(delta):
 	else:
 		was_on_floor = false
 	
-	if translation.y < -20:
+	if translation.y < -10:
 		System.game.ui.health = 0
 
 func _input(event):
@@ -165,3 +165,6 @@ func die():
 		animator.play("DIE")
 		$Death.play()
 		dead = true
+
+func damage():
+	System.game.ui.damage()
