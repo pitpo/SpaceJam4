@@ -34,6 +34,8 @@ func _ready():
 		$Crown.visible = false
 
 func _process(delta):
+	if dead: return
+	
 	if Input.is_action_just_pressed("player_crown_used"):
 		use_crown()
 	if Input.is_action_just_released("player_crown_used") and equipped_crown == System.CROWN.JETPACK:
