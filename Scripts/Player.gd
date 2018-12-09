@@ -12,6 +12,7 @@ var dir = 1
 var jumping = false
 var dead = false
 var jetpack = false
+var target_rotation = 90
 
 var equipped_crown = System.CROWN.BOOMERANG
 
@@ -55,13 +56,15 @@ func _physics_process(delta):
 	
 	var walking = false
 	if move_x > 0:
-		$PlayerModel.rotation_degrees.y = 90
+		target_rotation = 90
 		dir = 1
 		walking = true
 	elif move_x < 0:
-		$PlayerModel.rotation_degrees.y = -90
+		target_rotation = -90
 		dir = -1
 		walking = true
+	
+	$PlayerModel.rotation_degrees.y += (target_rotation - $PlayerModel.rotation_degrees.y)/10
 	
 	if Input.is_action_pressed("player_move_jump") and !jetpack and is_on_floor():
 		jumping = true
