@@ -1,6 +1,7 @@
 extends RigidBody
 
 var boomerang_speed
+var teleport_timeout
 
 func boomerang(dir):
 	System.reparent(self, System.game)
@@ -11,6 +12,7 @@ func throw(dir):
 	System.reparent(self, System.game)
 	mode = RigidBody.MODE_RIGID
 	add_force(Vector3(dir * 300, 300, 0), Vector3())
+	teleport_timeout = 2
 
 func teleport():
 	var fx = preload("res://Nodes/TeleportFX.tscn").instance()
@@ -45,6 +47,13 @@ func _physics_process(delta):
 				$Boomerang.stop()
 			else:
 				translation += to_target.normalized() * 10 * delta
+	elif teleport_timeout:
+		teleport_timeout -= delta
+		if teleport_timeout <= 0:
+			System.reparent(self, System.player)
+			translation = System.player.crown_origin
+			rotation = Vector3()
+			mode = RigidBody.MODE_STATIC
 	else:
 		$Crown/BoomerangFlight.stop()
 

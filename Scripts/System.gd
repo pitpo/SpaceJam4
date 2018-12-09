@@ -1,11 +1,17 @@
 extends Node
 
-enum CROWN {BOOMERANG, SLOWDOWN, TELEPORTATION, JETPACK}
+enum CROWN {BOOMERANG, TELEPORTATION, SLOWDOWN, JETPACK}
 
 var player
 var game
 
-var slow_down = false
+var slow_down
+
+func _process(delta):
+	if slow_down:
+		slow_down -= delta
+		if slow_down <= 0:
+			slow_down = null
 
 func reparent(node, new_parent):
 	var old_pos = node.global_transform

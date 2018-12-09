@@ -56,6 +56,7 @@ func _physics_process(delta):
 		velocity = Vector3()
 
 func on_camera_entered(camera):
+	$Alien/AnimationPlayer.play("Walk")
 	is_visible = true
 
 func on_camera_exited(camera):

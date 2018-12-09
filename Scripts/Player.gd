@@ -4,14 +4,15 @@ onready var crown = $Crown
 onready var crown_origin = $Crown.translation
 onready var animator = $PlayerModel/AnimationPlayer
 
-var crowns = 4
+var crowns = 2
 
 var velocity = Vector3()
-var jump_strength = 8
+var jump_strength = 10
 var dir = 1
 var jumping = false
 var dead = false
 var jetpack = false
+var target_rotation = 90
 
 var equipped_crown = System.CROWN.BOOMERANG
 
@@ -33,7 +34,12 @@ func _process(delta):
 		use_crown()
 	if Input.is_action_just_released("player_crown_used") and equipped_crown == System.CROWN.JETPACK:
 		disable_jetpack()
-
+	
+	if Input.is_action_just_pressed("next_crown"):
+		set_crown((equipped_crown + 1) % crowns)
+	if Input.is_action_just_pressed("previous_crown"):
+		set_crown(-1)
+	
 func _physics_process(delta):
 	if dead: return
 	
@@ -55,13 +61,15 @@ func _physics_process(delta):
 	
 	var walking = false
 	if move_x > 0:
-		$PlayerModel.rotation_degrees.y = 90
+		target_rotation = 90
 		dir = 1
 		walking = true
 	elif move_x < 0:
-		$PlayerModel.rotation_degrees.y = -90
+		target_rotation = -90
 		dir = -1
 		walking = true
+	
+	$PlayerModel.rotation_degrees.y += (target_rotation - $PlayerModel.rotation_degrees.y)/10
 	
 	if Input.is_action_pressed("player_move_jump") and !jetpack and is_on_floor():
 		jumping = true
@@ -92,9 +100,16 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode >= 49 and event.scancode < 49 + crowns and has_node("Crown"):
-			equipped_crown = event.scancode - 49
-			for i in crowns:
-				$Crown.get_child(i).visible = (equipped_crown == i)
+			set_crown(event.scancode - 49)
+
+func set_crown(j):
+	if j < 0:
+		equipped_crown -= 1
+		if equipped_crown < 0: equipped_crown = crowns-1
+	else:
+		equipped_crown = j
+	
+	for i in crowns: $Crown.get_child(i).visible = (equipped_crown == i)
 
 func use_crown():
 	match equipped_crown:
@@ -102,9 +117,11 @@ func use_crown():
 			if has_node("Crown"):
 				$Crown.boomerang(dir)
 		System.CROWN.SLOWDOWN:
-			System.slow_down = !System.slow_down
-			if System.slow_down:
+			if !System.slow_down:
+				System.slow_down = 3
 				$Crown/Crown3/Ice.play()
+			else:
+				System.slow_down = null
 		System.CROWN.TELEPORTATION:
 			if has_node("Crown"):
 				$Crown.throw(dir)
