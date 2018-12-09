@@ -25,6 +25,9 @@ func teleport():
 
 func _physics_process(delta):
 	if boomerang_speed != null:
+		if !$Crown/BoomerangFlight.playing:
+			$Crown/BoomerangFlight.play()
+			$Attack.play()
 		var sgn = sign(boomerang_speed)
 		
 		if boomerang_speed != 0:
@@ -42,10 +45,13 @@ func _physics_process(delta):
 				$Boomerang.stop()
 			else:
 				translation += to_target.normalized() * 10 * delta
+	else:
+		$Crown/BoomerangFlight.stop()
 
 func on_Area_body_entered(body):
 	if boomerang_speed:
 		boomerang_speed = 0
+		$Crown/BoomerangHit.play()
 		
 		if body.is_in_group("enemies"):
 			body.damage()
