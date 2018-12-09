@@ -74,6 +74,13 @@ func _physics_process(delta):
 	if translation.y < -20:
 		System.game.ui.health = 0
 
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed and event.scancode >= 49 and event.scancode < 52 and has_node("Crown"):
+			equipped_crown = event.scancode - 49
+			for i in 3:
+				$Crown.get_child(i).visible = (equipped_crown == i)
+
 func use_crown():
 	match equipped_crown:
 		System.CROWN.BOOMERANG:
