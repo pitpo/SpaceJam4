@@ -38,3 +38,8 @@ func _physics_process(delta):
 				$Boomerang.stop()
 			else:
 				translation += to_target.normalized() * 10 * delta
+
+func on_body_entered(body):
+	if body.is_in_group("enemies") && boomerang_speed != 0:
+		body.damage()
+	boomerang_speed = 0

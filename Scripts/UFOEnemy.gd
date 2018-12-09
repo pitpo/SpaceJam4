@@ -4,7 +4,17 @@ var is_visible = false
 var velocity = Vector3()
 var speed = 2
 var time_to_shoot = 2
+
+func _ready():
+	health = 1
+
 func _physics_process(delta):
+	if health == 0:
+		velocity += Vector3.UP * delta
+		move_and_slide(velocity * speed * System.time_scale(), Vector3.UP)
+		if !is_visible:
+			queue_free()
+		return
 	if is_visible:
 		var nearest_floor = $RayCast.get_collider()
 		if nearest_floor:
