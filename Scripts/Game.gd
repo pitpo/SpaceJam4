@@ -11,6 +11,12 @@ func _init():
 
 func _ready():
 	camera.translation.x = player.translation.x
+	
+	if System.save:
+		System.player.translation = System.save[0]
+		System.game.ui.crowns = System.save[1]
+		System.player.crowns = System.save[2]
+		System.player.get_node("Crown").visible = true
 
 func _process(delta):
 	camera.translation.x += (player.translation.x - camera.translation.x)/10

@@ -7,6 +7,8 @@ var game
 
 var slow_down
 
+var save
+
 func _process(delta):
 	if slow_down:
 		slow_down -= delta

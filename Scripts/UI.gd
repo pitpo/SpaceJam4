@@ -26,6 +26,7 @@ func damage():
 	health -= 1
 
 func change_music(stream):
+	System.save = [System.player.translation, crowns, System.player.crowns]
 	next_music = load(stream)
 	$"../Music/AnimationPlayer".play("FadeOut")
 
