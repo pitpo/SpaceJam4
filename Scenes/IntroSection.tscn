@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Berys/New_DAE/Scene_block/scene_block.dae" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/Modules/BlockSmall.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Nodes/SmallCrown.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/BigCrown.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Models/Crown.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=11]
 
 [node name="IntroSection" index="0" instance=ExtResource( 1 )]
 
@@ -112,4 +113,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03512, 8.2414, 20.9192 )
 
 [node name="BlockSmall2" parent="." index="35" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04611, 3.19206, 23.3946 )
+
+[node name="Alien" parent="." index="36" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394436, 3.14312, -4.55246 )
 
