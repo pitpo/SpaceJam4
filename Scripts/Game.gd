@@ -7,6 +7,7 @@ onready var ui = $"../../../UI"
 
 func _init():
 	System.game = self
+	System.slow_down = false
 
 func _ready():
 	camera.translation.x = player.translation.x

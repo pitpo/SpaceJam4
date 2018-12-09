@@ -16,16 +16,16 @@ func _physics_process(delta):
 		velocity.x = player_direction
 		velocity.z = sign(System.player.translation.z - translation.z)
 		if player_direction < 0 && rotation_degrees.y > -90:
-			rotation_degrees.y -= delta * 150 * speed
+			rotation_degrees.y -= delta * 150 * speed * System.time_scale()
 		elif player_direction > 0 && rotation_degrees.y < 90:
-			rotation_degrees.y += delta * 150 * speed
+			rotation_degrees.y += delta * 150 * speed * System.time_scale()
 		if time_to_shoot < 0:
 			var projectile = preload("res://Nodes/UFOProjectile.tscn").instance()
 			projectile.translation = translation
 			get_parent().add_child(projectile)
 			time_to_shoot = 2
-		time_to_shoot -= delta
-		move_and_slide(velocity.normalized() * speed, Vector3.UP)
+		time_to_shoot -= delta * System.time_scale()
+		move_and_slide(velocity.normalized() * speed * System.time_scale(), Vector3.UP)
 		
 	else:
 		velocity = Vector3()
@@ -35,9 +35,3 @@ func on_camera_entered(camera):
 
 func on_camera_exited(camera):
 	is_visible = false
-
-func slowdown_activated():
-	speed = 1
-
-func slowdown_disabled():
-	speed = 2
