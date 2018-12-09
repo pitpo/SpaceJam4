@@ -12,6 +12,7 @@ func _physics_process(delta):
 	if health == 0:
 		velocity += Vector3.UP * delta
 		move_and_slide(velocity * speed * System.time_scale(), Vector3.UP)
+		$Noise.unit_db -= 0.25
 		if !is_visible:
 			queue_free()
 		return
@@ -33,6 +34,7 @@ func _physics_process(delta):
 			var projectile = preload("res://Nodes/UFOProjectile.tscn").instance()
 			projectile.translation = translation
 			get_parent().add_child(projectile)
+			$Gun.play()
 			time_to_shoot = 2
 		time_to_shoot -= delta * System.time_scale()
 		move_and_slide(velocity.normalized() * speed * System.time_scale(), Vector3.UP)
