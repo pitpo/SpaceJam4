@@ -44,14 +44,14 @@ script = ExtResource( 1 )
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 
 [node name="AnimationPlayer" parent="Alien" index="2"]
-playback_speed = 2.0
+playback_speed = 3.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.173648, -0.984807, 0, 0.984807, -0.173648, 0, 1.137, 0.104 )
+transform = Transform( 1, 0, 0, 0, -0.173648, -0.984807, 0, 0.984807, -0.173648, 0, 1.13724, 0.103693 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape"]
-playback_speed = 2.0
+playback_speed = 3.0
 anims/attac = SubResource( 2 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
