@@ -34,7 +34,12 @@ func _process(delta):
 		use_crown()
 	if Input.is_action_just_released("player_crown_used") and equipped_crown == System.CROWN.JETPACK:
 		disable_jetpack()
-
+	
+	if Input.is_action_just_pressed("next_crown"):
+		set_crown((equipped_crown + 1) % crowns)
+	if Input.is_action_just_pressed("previous_crown"):
+		set_crown(-1)
+	
 func _physics_process(delta):
 	if dead: return
 	
@@ -95,9 +100,16 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode >= 49 and event.scancode < 49 + crowns and has_node("Crown"):
-			equipped_crown = event.scancode - 49
-			for i in crowns:
-				$Crown.get_child(i).visible = (equipped_crown == i)
+			set_crown(event.scancode - 49)
+
+func set_crown(j):
+	if j < 0:
+		equipped_crown -= 1
+		if equipped_crown < 0: equipped_crown = crowns-1
+	else:
+		equipped_crown = j
+	
+	for i in crowns: $Crown.get_child(i).visible = (equipped_crown == i)
 
 func use_crown():
 	match equipped_crown:
