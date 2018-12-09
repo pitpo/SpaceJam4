@@ -4,7 +4,7 @@ onready var crown = $Crown
 onready var crown_origin = $Crown.translation
 onready var animator = $PlayerModel/AnimationPlayer
 
-var crowns = 2
+var crowns = 0
 
 var velocity = Vector3()
 var jump_strength = 10
@@ -141,6 +141,7 @@ func use_crown():
 			else:
 				System.slow_down = null
 		System.CROWN.TELEPORTATION:
+			jetpack = false
 			if has_node("Crown") && teleport_use_timeout < 0:
 				$Crown/Crown/BoomerangFlight.play()
 				$Crown.throw(dir)
