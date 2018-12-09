@@ -63,7 +63,6 @@ transform = Transform( 0.0755477, 0.0223702, 0.996891, -0.283921, 0.958848, 0, -
 transform = Transform( 0.953863, -0.300242, 0, 0.300242, 0.953863, 0, 0, 0, 1, -22.0542, -2.34267, -0.82207 )
 
 [node name="Crowns" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="SmallCrown" parent="Crowns" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.11994, 0.949233, -1.1975 )
@@ -103,6 +102,45 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5265, -0.501008, -2.49365 )
 
 [node name="SmallCrown13" parent="Crowns" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5265, 2.12086, -2.49365 )
+
+[node name="SmallCrown14" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5926, 1.47973, -1.22301 )
+
+[node name="SmallCrown15" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1618, 1.47973, -1.22301 )
+
+[node name="SmallCrown16" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.7884, 1.47973, -1.22301 )
+
+[node name="SmallCrown17" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.0246, 2.19982, -0.0783877 )
+
+[node name="SmallCrown18" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54.2763, 2.19982, -1.40115 )
+
+[node name="SmallCrown19" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.6336, 4.81853, -2.66868 )
+
+[node name="SmallCrown20" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.3608, 6.1391, -2.30158 )
+
+[node name="SmallCrown21" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.796, 14.7816, -2.10108 )
+
+[node name="SmallCrown22" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.94, 18.0564, -1.45199 )
+
+[node name="SmallCrown23" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.94, 18.7478, -1.45199 )
+
+[node name="SmallCrown24" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.7716, 22.0044, -0.884182 )
+
+[node name="SmallCrown25" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.7621, 27.4764, -1.90364 )
+
+[node name="SmallCrown26" parent="Crowns" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.459, 35.1476, -3.38297 )
 
 [node name="Alien" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5084, 1.41454, -1.64542 )
