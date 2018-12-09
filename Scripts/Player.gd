@@ -1,5 +1,6 @@
 extends KinematicBody
 
+onready var crown = $Crown
 onready var crown_origin = $Crown.translation
 onready var animator = $PlayerModel/AnimationPlayer
 
@@ -80,6 +81,11 @@ func use_crown():
 				$Crown.boomerang(dir)
 		System.CROWN.SLOWDOWN:
 			System.emit_signal("slowdown_switched")
+		System.CROWN.TELEPORTATION:
+			if has_node("Crown"):
+				$Crown.throw(dir)
+			else:
+				crown.teleport()
 
 func animation_end(anim):
 	if anim == "start_jump":
