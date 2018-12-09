@@ -18,12 +18,11 @@ func _physics_process(delta):
 	
 	velocity += Vector3.DOWN * 5
 	
-	move_and_slide(velocity)
-	
-	for i in get_slide_count():
-		if get_slide_collision(i) == System.player:
+	var col = move_and_collide(velocity * delta)
+	if col:
+		if col.collider == System.player:
 			System.player.damage()
-			queue_free()
+		queue_free()
 
 func on_camera_exited(camera):
 	queue_free()"
@@ -36,6 +35,7 @@ height = 1.0
 
 [sub_resource type="SphereShape" id=3]
 
+radius = 0.484524
 
 [node name="SpiderTfu" type="KinematicBody"]
 script = SubResource( 1 )
@@ -45,9 +45,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 shape = SubResource( 3 )
-disabled = true
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )

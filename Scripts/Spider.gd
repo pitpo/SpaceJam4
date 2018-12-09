@@ -30,6 +30,7 @@ func _physics_process(delta):
 				
 				if abs(translation.x - System.player.translation.x) < 4:
 					animator.play("Spike")
+					$AnimationPlayer.play("Rachu Ciachu")
 				else:
 					animator.play("tfu")
 	
@@ -50,3 +51,7 @@ func on_animation_end(anim_name):
 		animator.playback_speed = 4
 		animator.play("Walk")
 		mode = "walk"
+
+func on_attacked(body):
+	if body == System.player:
+		body.damage()
