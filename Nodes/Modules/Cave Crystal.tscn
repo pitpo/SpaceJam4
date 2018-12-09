@@ -13,3 +13,11 @@ points = PoolVector3Array( 0.0952247, -0.447604, -0.379654, 0.316979, -0.421669,
 [node name="CollisionShape" type="CollisionShape" parent="Icosphere/StaticBody" index="0"]
 shape = SubResource( 1 )
 
+[node name="OmniLight" type="OmniLight" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.328477, 1.12785, 1.79168 )
+light_color = Color( 0.54902, 0.980392, 0.372549, 1 )
+light_energy = 8.31
+light_specular = 0.85
+shadow_enabled = true
+omni_range = 58.6
+
