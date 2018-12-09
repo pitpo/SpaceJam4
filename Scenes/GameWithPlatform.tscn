@@ -7,8 +7,9 @@
 [ext_resource path="res://Nodes/Climb.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/IntroSection.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Models/Planet1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Cave.tscn" type="PackedScene" id=8]
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Area
 
@@ -16,18 +17,9 @@ func on_enter(body):
 	if body == System.player:
 		System.game.ui.change_music(\"res://Music/InTheMountains.ogg\")"
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=2]
 
 extents = Vector3( 1, 13.0928, 5.78194 )
-
-[sub_resource type="GDScript" id=3]
-
-script/source = "extends Node
-
-func _process(delta):
-	if !has_node(\"../Alien\"):
-		$\"../IntroSection/BigCrown2/AnimationPlayer\".play(\"Nowa animacja\")
-		queue_free()"
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -54,13 +46,13 @@ transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96049, 9.00695, -136.571 )
 
 [node name="MusicChanger1" type="Area" parent="."]
-script = SubResource( 4 )
+script = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="MusicChanger1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1124, 12.8668, -1.63833 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
-[node name="Node" type="Node" parent="."]
-script = SubResource( 3 )
+[node name="Cave" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 198.532, 0, -2 )
 
 [connection signal="body_entered" from="MusicChanger1" to="MusicChanger1" method="on_enter"]
