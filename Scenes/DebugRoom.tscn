@@ -3,8 +3,15 @@
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/UFOEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Nodes/BigCrown.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Berys/New_DAE/Ice_Crown/ice_crown.dae" type="PackedScene" id=4]
-[ext_resource path="res://Berys/New_DAE/crystal_crown/crystal_crown.dae" type="PackedScene" id=5]
+[ext_resource path="res://Berys/New_DAE/Crown/crown.dae" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Spatial
+
+func _init():
+	System.game = self
+	System.slow_down = false"
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -20,6 +27,7 @@ size = Vector2( 10, 10 )
 points = PoolVector3Array( -5, -5, 0, -5, 5, 0, 5, 5, 0, -5, -5, 0, 5, 5, 0, 5, -5, 0 )
 
 [node name="Spatial" type="Spatial"]
+script = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0 )
@@ -43,8 +51,4 @@ transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -3.33
 [node name="BigCrown" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22166, -4.50026e-008, -1.02954 )
 crown = ExtResource( 4 )
-
-[node name="BigCrown2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22166, -4.50026e-008, 2.7231 )
-crown = ExtResource( 5 )
 
