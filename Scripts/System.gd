@@ -1,6 +1,6 @@
 extends Node
 
-enum CROWN {BOOMERANG, SLOWDOWN}
+enum CROWN {BOOMERANG, SLOWDOWN, TELEPORTATION}
 
 signal slowdown_switched
 

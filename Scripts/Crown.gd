@@ -7,9 +7,17 @@ func boomerang(dir):
 	$Boomerang.play("Rotate")
 	boomerang_speed = 10 * dir
 
-func throw():
+func throw(dir):
 	System.reparent(self, System.game)
 	mode = RigidBody.MODE_RIGID
+	add_force(Vector3(dir * 300, 300, 0), Vector3())
+
+func teleport():
+	System.player.translation = translation + Vector3.UP * 2
+	System.reparent(self, System.player)
+	translation = System.player.crown_origin
+	rotation = Vector3()
+	mode = RigidBody.MODE_STATIC
 
 func _physics_process(delta):
 	if boomerang_speed != null:
