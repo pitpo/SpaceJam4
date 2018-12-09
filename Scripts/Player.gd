@@ -34,6 +34,8 @@ func _ready():
 		$Crown.visible = false
 
 func _process(delta):
+	if dead: return
+	
 	if Input.is_action_just_pressed("player_crown_used"):
 		use_crown()
 	if Input.is_action_just_released("player_crown_used") and equipped_crown == System.CROWN.JETPACK:
@@ -140,6 +142,7 @@ func use_crown():
 				System.slow_down = null
 		System.CROWN.TELEPORTATION:
 			if has_node("Crown") && teleport_use_timeout < 0:
+				$Crown/Crown/BoomerangFlight.play()
 				$Crown.throw(dir)
 			elif teleport_use_timeout < 0:
 				teleport_use_timeout = 2

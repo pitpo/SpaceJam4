@@ -131,7 +131,6 @@ mode = 1
 script = ExtResource( 2 )
 
 [node name="Crown" parent="Crown" instance=ExtResource( 3 )]
-editor/display_folded = true
 transform = Transform( 0.3, 0, 5.24537e-008, 0, 0.3, 0, -5.24537e-008, 0, 0.3, 0.0620342, 1.91394, 0 )
 
 [node name="BoomerangHit" type="AudioStreamPlayer3D" parent="Crown/Crown"]
@@ -143,6 +142,7 @@ stream = ExtResource( 5 )
 unit_db = 4.372
 
 [node name="Crown3" parent="Crown" instance=ExtResource( 6 )]
+editor/display_folded = true
 transform = Transform( 0.3, 0, 1.90582e-021, 0, 0.3, 0, -1.90582e-021, 0, 0.3, 0.0620342, 1.91394, 0 )
 visible = false
 
