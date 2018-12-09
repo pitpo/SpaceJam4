@@ -9,7 +9,11 @@ func _process(delta):
 	if health == 0:
 		System.player.die()
 	
-	$IceEffect.visible = System.slow_down
+	if System.slow_down:
+		$IceEffect.visible = true
+		$IceEffect/TimeLeft.value = System.slow_down * 100
+	else:
+		$IceEffect.visible = false
 
 func add_crown():
 	crowns += 1

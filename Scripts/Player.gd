@@ -102,9 +102,11 @@ func use_crown():
 			if has_node("Crown"):
 				$Crown.boomerang(dir)
 		System.CROWN.SLOWDOWN:
-			System.slow_down = !System.slow_down
-			if System.slow_down:
+			if !System.slow_down:
+				System.slow_down = 3
 				$Crown/Crown3/Ice.play()
+			else:
+				System.slow_down = null
 		System.CROWN.TELEPORTATION:
 			if has_node("Crown"):
 				$Crown.throw(dir)
