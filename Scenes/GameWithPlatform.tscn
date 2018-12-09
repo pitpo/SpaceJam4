@@ -85,7 +85,7 @@ shape = SubResource( 2 )
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 198.532, 0, -2 )
 
 [node name="Spider" parent="." instance=ExtResource( 9 )]
-transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 249.727, 3.61608, -2.471 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 232.956, 3.61608, -2.471 )
 
 [node name="SmallCrown" parent="." instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 84.024, 23.9227, -4.42871 )

@@ -38,7 +38,6 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="CollisionShape3" type="CollisionShape" parent="Cube/StaticBody" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="Cave Platform" parent="." index="2" instance=ExtResource( 2 )]
