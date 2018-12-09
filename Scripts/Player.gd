@@ -4,7 +4,7 @@ onready var crown = $Crown
 onready var crown_origin = $Crown.translation
 onready var animator = $PlayerModel/AnimationPlayer
 
-var crowns = 2
+var crowns = 0
 
 var velocity = Vector3()
 var jump_strength = 10
@@ -28,6 +28,9 @@ func _ready():
 	
 	animator.playback_speed = 4
 	animator.connect("animation_finished", self, "animation_end")
+	
+	if crowns == 0:
+		$Crown.visible = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("player_crown_used"):
@@ -35,10 +38,11 @@ func _process(delta):
 	if Input.is_action_just_released("player_crown_used") and equipped_crown == System.CROWN.JETPACK:
 		disable_jetpack()
 	
-	if Input.is_action_just_pressed("next_crown"):
-		set_crown((equipped_crown + 1) % crowns)
-	if Input.is_action_just_pressed("previous_crown"):
-		set_crown(-1)
+	if crowns > 0:
+		if Input.is_action_just_pressed("next_crown"):
+			set_crown((equipped_crown + 1) % crowns)
+		if Input.is_action_just_pressed("previous_crown"):
+			set_crown(-1)
 	
 	if $RayCast.get_collider():
 		$RayCast.visible = true
@@ -109,7 +113,7 @@ func _input(event):
 			set_crown(event.scancode - 49)
 
 func set_crown(j):
-	if !has_node("Crown"): return
+	if !has_node("Crown") or crowns == 0: return
 	
 	if j < 0:
 		equipped_crown -= 1
@@ -120,6 +124,7 @@ func set_crown(j):
 	for i in crowns: $Crown.get_child(i).visible = (equipped_crown == i)
 
 func use_crown():
+	if crowns == 0: return
 	match equipped_crown:
 		System.CROWN.BOOMERANG:
 			if has_node("Crown"):

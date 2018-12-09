@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Crown.gd" type="Script" id=2]
@@ -9,12 +9,13 @@
 [ext_resource path="res://Berys/Muzyka/Don_t Stop/pick_crown_ice.wav" type="AudioStream" id=7]
 [ext_resource path="res://Models/Crown2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Sprites/Kliponius-Snowflake-stylized.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/fire-flame.png" type="Texture" id=10]
-[ext_resource path="res://Berys/Muzyka/Don_t Stop/pick_crown_fire.wav" type="AudioStream" id=11]
-[ext_resource path="res://Berys/Muzyka/Don_t Stop/hero_attack.wav" type="AudioStream" id=12]
-[ext_resource path="res://Models/Player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Berys/Muzyka/Don_t Stop/hero_death.wav" type="AudioStream" id=14]
-[ext_resource path="res://Sprites/Shadow.png" type="Texture" id=15]
+[ext_resource path="res://Models/Crown4.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sprites/fire-flame.png" type="Texture" id=11]
+[ext_resource path="res://Berys/Muzyka/Don_t Stop/pick_crown_fire.wav" type="AudioStream" id=12]
+[ext_resource path="res://Berys/Muzyka/Don_t Stop/hero_attack.wav" type="AudioStream" id=13]
+[ext_resource path="res://Models/Player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Berys/Muzyka/Don_t Stop/hero_death.wav" type="AudioStream" id=15]
+[ext_resource path="res://Sprites/Shadow.png" type="Texture" id=16]
 
 [sub_resource type="Gradient" id=1]
 
@@ -68,7 +69,7 @@ flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_billboard_mode = 1
-albedo_texture = ExtResource( 10 )
+albedo_texture = ExtResource( 11 )
 
 [sub_resource type="QuadMesh" id=10]
 
@@ -104,7 +105,6 @@ radius = 0.282473
 script = ExtResource( 1 )
 
 [node name="Crown" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, -3.55271e-015, 0, 1, 0, 3.55271e-015, 0, 1, 2.38419e-007, 5.96046e-008, -9.31323e-010 )
 collision_layer = 2
 collision_mask = 2
@@ -143,7 +143,8 @@ lifetime = 0.5
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 5 )
 
-[node name="Crown4" parent="Crown" instance=ExtResource( 3 )]
+[node name="Crown4" parent="Crown" instance=ExtResource( 10 )]
+editor/display_folded = true
 transform = Transform( 0.3, 0, 5.24537e-008, 0, 0.3, 0, -5.24537e-008, 0, 0.3, 0.0620342, 1.91394, 0 )
 visible = false
 
@@ -156,7 +157,8 @@ process_material = SubResource( 8 )
 draw_pass_1 = SubResource( 10 )
 
 [node name="Fire" type="AudioStreamPlayer3D" parent="Crown/Crown4"]
-stream = ExtResource( 11 )
+transform = Transform( 3.33333, 0, -5.68434e-014, 0, 3.33333, 0, 5.68434e-014, 0, 3.33333, 0, 0, 0 )
+stream = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Crown"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0647715, 2.0411, -0.0161929 )
@@ -176,9 +178,9 @@ shape = SubResource( 11 )
 
 [node name="Attack" type="AudioStreamPlayer3D" parent="Crown"]
 transform = Transform( 1, 0, 3.55271e-015, 0, 1, 0, -3.55271e-015, 0, 1, -2.38419e-007, -5.96046e-008, 9.31323e-010 )
-stream = ExtResource( 12 )
+stream = ExtResource( 13 )
 
-[node name="PlayerModel" parent="." instance=ExtResource( 13 )]
+[node name="PlayerModel" parent="." instance=ExtResource( 14 )]
 editor/display_folded = true
 transform = Transform( -1.31134e-008, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-008, 0, 0, 0 )
 
@@ -189,7 +191,7 @@ shape = SubResource( 13 )
 [node name="Listener" type="Listener" parent="."]
 
 [node name="Death" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 
 [node name="RayCast" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34445, 0 )
@@ -200,7 +202,7 @@ collision_mask = 7
 [node name="Shade" type="Sprite3D" parent="RayCast"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
 pixel_size = 0.0025
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [connection signal="body_entered" from="Crown/Area" to="Crown" method="on_Area_body_entered"]
 
