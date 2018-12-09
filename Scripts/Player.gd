@@ -13,6 +13,7 @@ var jumping = false
 var dead = false
 var jetpack = false
 var target_rotation = 90
+var teleport_use_timeout = 2
 
 var equipped_crown = System.CROWN.BOOMERANG
 
@@ -71,15 +72,16 @@ func _physics_process(delta):
 	
 	var walking = false
 	if move_x > 0:
-		target_rotation = 90
 		dir = 1
 		walking = true
 	elif move_x < 0:
-		target_rotation = -90
 		dir = -1
 		walking = true
+	target_rotation = rad2deg(Vector2(move_z, move_x).angle())
 	
 	$PlayerModel.rotation_degrees.y += (target_rotation - $PlayerModel.rotation_degrees.y)/10
+	
+	teleport_use_timeout -= delta
 	
 	if Input.is_action_pressed("player_move_jump") and !jetpack and is_on_floor():
 		jumping = true
@@ -136,9 +138,10 @@ func use_crown():
 			else:
 				System.slow_down = null
 		System.CROWN.TELEPORTATION:
-			if has_node("Crown"):
+			if has_node("Crown") && teleport_use_timeout < 0:
 				$Crown.throw(dir)
-			else:
+			elif teleport_use_timeout < 0:
+				teleport_use_timeout = 2
 				crown.teleport()
 		System.CROWN.JETPACK:
 			enable_jetpack()
