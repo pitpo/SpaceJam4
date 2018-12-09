@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Models/Planet1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Cave.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/Spider.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Nodes/SmallCrown.tscn" type="PackedScene" id=10]
 
 [sub_resource type="GDScript" id=1]
 
@@ -76,6 +77,15 @@ transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 198.5
 
 [node name="Spider" parent="." instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 249.727, 3.61608, -2.471 )
+
+[node name="SmallCrown" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 84.024, 23.9227, -4.42871 )
+
+[node name="SmallCrown2" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 104.794, 16.9626, -3.09892 )
+
+[node name="SmallCrown3" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 123.058, 5.71301, -1.07954 )
 
 [connection signal="body_entered" from="MusicChanger1" to="MusicChanger1" method="on_enter"]
 [connection signal="body_entered" from="MusicChanger2" to="MusicChanger2" method="on_enter"]
