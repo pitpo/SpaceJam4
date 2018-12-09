@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Alien.gd" type="Script" id=1]
 [ext_resource path="res://Models/Alien.tscn" type="PackedScene" id=2]
@@ -8,18 +8,56 @@
 radius = 0.395071
 height = 1.46421
 
+[sub_resource type="Animation" id=2]
+
+resource_name = "attac"
+length = 2.92
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.7, 1.9, 2, 2.1, 2.2, 2.4, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 100, 0, 0 ), Vector3( 39.63, 0, 0 ), Vector3( 88.915, 0, 0 ), Vector3( 142.087, 0, 0 ), Vector3( 178.42, 0, 0 ), Vector3( 182.177, 0, 0 ), Vector3( 139.1, 0, 0 ), Vector3( 100, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.6925, 1.9, 2, 2.1, 2.2, 2.4, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.13724, 0.103693 ), Vector3( 0, 1.017, -0.386 ), Vector3( 0, 1.16, -0.058 ), Vector3( 0, 0.994, 0.618 ), Vector3( 0, 0.747, 0.514 ), Vector3( 0, 0.585, 0.574 ), Vector3( 0, 1.038, 0.573 ), Vector3( 0, 1.137, 0.104 ) ]
+}
+
 [node name="Alien" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="Alien" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 
+[node name="AnimationPlayer" parent="Alien" index="2"]
+playback_speed = 2.0
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.173648, -0.984808, 0, 0.984808, -0.173648, 0, 1.13724, 0.103693 )
+transform = Transform( 1, 0, 0, 0, -0.173648, -0.984807, 0, 0.984807, -0.173648, 0, 1.137, 0.104 )
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape"]
+playback_speed = 2.0
+anims/attac = SubResource( 2 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 aabb = AABB( -1, -1, -4.19936, 2, 2, 8.39872 )
 
 [connection signal="camera_entered" from="VisibilityNotifier" to="." method="on_camera_entered"]
 [connection signal="camera_exited" from="VisibilityNotifier" to="." method="on_camera_exited"]
+
+[editable path="Alien"]

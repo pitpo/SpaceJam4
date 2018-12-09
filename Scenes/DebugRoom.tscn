@@ -39,5 +39,5 @@ transform = Transform( 1, 0, 0, 0, 0.945063, 0.326888, 0, -0.326888, 0.945063, -
 transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -3.33914, 3.3763, -1.88538 )
 
 [node name="Spatial" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22322, 0.627112, -0.00627375 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0312893, 0.0398859, -1.34321 )
 
