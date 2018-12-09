@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Alien.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/IntroSection.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Models/Planet1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Cave.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Nodes/Spider.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=1]
 
@@ -72,6 +73,9 @@ shape = SubResource( 2 )
 
 [node name="Cave" parent="." instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 198.532, 0, -2 )
+
+[node name="Spider" parent="." instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 249.727, 3.61608, -2.471 )
 
 [connection signal="body_entered" from="MusicChanger1" to="MusicChanger1" method="on_enter"]
 [connection signal="body_entered" from="MusicChanger2" to="MusicChanger2" method="on_enter"]

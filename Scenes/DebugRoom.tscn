@@ -3,7 +3,7 @@
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/BigCrown.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Berys/New_DAE/Crown/crown.dae" type="PackedScene" id=3]
-[ext_resource path="res://Nodes/UFOEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/Spider.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 
@@ -50,6 +50,6 @@ transform = Transform( 1, 0, 0, 0, 0.945063, 0.326888, 0, -0.326888, 0.945063, -
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11493, -4.50026e-008, -1.02954 )
 crown = ExtResource( 3 )
 
-[node name="UFOEnemy" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52388, 1.784, -1.35203 )
+[node name="Spider" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0174524, 0, -0.999848, 0, 1, 0, 0.999848, 0, 0.0174524, 4.1495, 1.29931e-008, -2.32636 )
 
