@@ -7,11 +7,11 @@
 [ext_resource path="res://Berys/Muzyka/Don_t Stop/crow_throw.wav" type="AudioStream" id=5]
 [ext_resource path="res://Models/Crown3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Berys/Muzyka/Don_t Stop/pick_crown_ice.wav" type="AudioStream" id=7]
-[ext_resource path="res://Models/Crown2.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Sprites/Kliponius-Snowflake-stylized.png" type="Texture" id=9]
-[ext_resource path="res://Models/Crown4.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Sprites/fire-flame.png" type="Texture" id=11]
-[ext_resource path="res://Berys/Muzyka/Don_t Stop/pick_crown_fire.wav" type="AudioStream" id=12]
+[ext_resource path="res://Models/Crown4.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sprites/fire-flame.png" type="Texture" id=9]
+[ext_resource path="res://Berys/Muzyka/Don_t Stop/pick_crown_fire.wav" type="AudioStream" id=10]
+[ext_resource path="res://Models/Crown2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Sprites/Kliponius-Snowflake-stylized.png" type="Texture" id=12]
 [ext_resource path="res://Models/Player.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Berys/Muzyka/Don_t Stop/hero_death.wav" type="AudioStream" id=14]
 [ext_resource path="res://Sprites/Shadow.png" type="Texture" id=15]
@@ -38,7 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="Gradient" id=2]
 
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+offsets = PoolRealArray( 0, 0.57377, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=3]
 
@@ -47,8 +48,8 @@ gradient = SubResource( 2 )
 [sub_resource type="ParticlesMaterial" id=4]
 
 emission_shape = 1
-emission_sphere_radius = 1.0
-gravity = Vector3( 0, -6, 0 )
+emission_sphere_radius = 2.0
+gravity = Vector3( 0, -100, 0 )
 angular_velocity = 1.0
 color_ramp = SubResource( 3 )
 
@@ -67,8 +68,7 @@ size = Vector2( 0.1, 0.1 )
 
 [sub_resource type="Gradient" id=7]
 
-offsets = PoolRealArray( 0, 0.57377, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=8]
 
@@ -77,8 +77,8 @@ gradient = SubResource( 7 )
 [sub_resource type="ParticlesMaterial" id=9]
 
 emission_shape = 1
-emission_sphere_radius = 2.0
-gravity = Vector3( 0, -100, 0 )
+emission_sphere_radius = 1.0
+gravity = Vector3( 0, -6, 0 )
 angular_velocity = 1.0
 color_ramp = SubResource( 8 )
 
@@ -88,7 +88,7 @@ flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_billboard_mode = 1
-albedo_texture = ExtResource( 11 )
+albedo_texture = ExtResource( 12 )
 
 [sub_resource type="QuadMesh" id=11]
 
@@ -154,18 +154,7 @@ stream = ExtResource( 7 )
 autoplay = "Rutatoete"
 anims/Rutatoete = SubResource( 1 )
 
-[node name="Crown2" parent="Crown" instance=ExtResource( 8 )]
-editor/display_folded = true
-transform = Transform( 0.3, 0, -6.03961e-015, 0, 0.3, 0, 6.03961e-015, 0, 0.3, 0.0620342, 1.91394, 0 )
-visible = false
-
-[node name="Particles" type="Particles" parent="Crown/Crown2"]
-transform = Transform( 1, 0, 2.71051e-020, 0, 1, 0, -2.71051e-020, 0, 1, 0, 0.84859, 0 )
-lifetime = 0.5
-process_material = SubResource( 4 )
-draw_pass_1 = SubResource( 6 )
-
-[node name="Crown4" parent="Crown" instance=ExtResource( 10 )]
+[node name="Crown4" parent="Crown" instance=ExtResource( 8 )]
 editor/display_folded = true
 transform = Transform( 0.3, 0, 5.24537e-008, 0, 0.3, 0, -5.24537e-008, 0, 0.3, 0.0620342, 1.91394, 0 )
 visible = false
@@ -175,12 +164,23 @@ transform = Transform( 1, 0, -1.74846e-007, 0, 1, 0, 1.74846e-007, 0, 1, 0, -1.1
 visible = false
 amount = 50
 lifetime = 0.3
-process_material = SubResource( 9 )
-draw_pass_1 = SubResource( 11 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
 
 [node name="Fire" type="AudioStreamPlayer3D" parent="Crown/Crown4"]
 transform = Transform( 3.33333, 0, -5.68434e-014, 0, 3.33333, 0, 5.68434e-014, 0, 3.33333, 0, 0, 0 )
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
+
+[node name="Crown2" parent="Crown" instance=ExtResource( 11 )]
+editor/display_folded = true
+transform = Transform( 0.3, 0, -6.03961e-015, 0, 0.3, 0, 6.03961e-015, 0, 0.3, 0.0620342, 1.91394, 0 )
+visible = false
+
+[node name="Particles" type="Particles" parent="Crown/Crown2"]
+transform = Transform( 1, 0, 2.71051e-020, 0, 1, 0, -2.71051e-020, 0, 1, 0, 0.84859, 0 )
+lifetime = 0.5
+process_material = SubResource( 9 )
+draw_pass_1 = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Crown"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0647715, 2.0411, -0.0161929 )
