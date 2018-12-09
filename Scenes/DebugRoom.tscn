@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/BigCrown.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Berys/New_DAE/Crown/crown.dae" type="PackedScene" id=3]
-[ext_resource path="res://Nodes/Spider.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Nodes/SpiderTfu.tscn" type="PackedScene" id=5]
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Spatial
 
@@ -14,32 +12,32 @@ func _init():
 	System.game = self
 	System.slow_down = false"
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=2]
 
 albedo_color = Color( 0.917647, 0.298039, 0.298039, 1 )
 
-[sub_resource type="QuadMesh" id=6]
+[sub_resource type="QuadMesh" id=3]
 
-material = SubResource( 5 )
+material = SubResource( 2 )
 size = Vector2( 10, 10 )
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=4]
 
 extents = Vector3( 5.14417, 5.30098, 1 )
 
 [node name="Spatial" type="Spatial"]
-script = SubResource( 4 )
+script = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0 )
-mesh = SubResource( 6 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MeshInstance"]
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.34155e-008, -0.99323 )
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.35459, 1, 0.154 )
@@ -50,10 +48,4 @@ transform = Transform( 1, 0, 0, 0, 0.945063, 0.326888, 0, -0.326888, 0.945063, -
 [node name="BigCrown" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11493, -4.50026e-008, -1.02954 )
 crown = ExtResource( 3 )
-
-[node name="Spider" parent="." instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 6.24643, 8.30997e-008, -0.722506 )
-
-[node name="SpiderTfu" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.82112, 0.5, -0.637974 )
 
