@@ -51,7 +51,7 @@ transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 playback_speed = 3.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.659739, -0.751494, 0, 0.751494, -0.659739, 0, 1.0578, 0.4792 )
+transform = Transform( 1, 0, 0, 0, 0.430696, -0.902496, 0, 0.902496, 0.430696, 0, 1.0662, -0.185638 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape"]

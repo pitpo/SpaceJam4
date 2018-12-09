@@ -157,6 +157,9 @@ transform = Transform( -1.31134e-008, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-008,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004, 0.955, 0 )
 shape = SubResource( 13 )
 
+[node name="Listener" type="Listener" parent="."]
+current = true
+
 [connection signal="body_entered" from="Crown/Area" to="Crown" method="on_Area_body_entered"]
 
 [editable path="PlayerModel"]
