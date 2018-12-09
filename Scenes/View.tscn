@@ -72,7 +72,6 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
@@ -82,6 +81,7 @@ size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
+audio_listener_enable_3d = true
 
 [node name="Game" parent="ViewportContainer/Viewport" instance=ExtResource( 4 )]
 
