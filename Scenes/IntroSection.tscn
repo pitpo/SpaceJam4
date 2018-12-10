@@ -235,12 +235,13 @@ tracks/0/keys = {
 transform = Transform( 1, 0, 0, 0, 0.699235, -0.0467273, 0, 0.0327091, 0.998908, 0.362575, 2.97622, 30.9449 )
 
 [node name="Cube" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 50, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Cube"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Cube/StaticBody"]
 shape = SubResource( 2 )

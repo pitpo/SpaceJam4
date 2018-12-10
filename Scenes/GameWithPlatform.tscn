@@ -50,7 +50,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16443, 4.11762, -1.65137 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75.8373, 27.0949, -2.60509 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 217.672, 3.64535, -2.46867 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.4027, 3.64535, -2.46867 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.5, 5 )
@@ -85,11 +85,7 @@ shape = SubResource( 2 )
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 198.532, 0, -2 )
 
 [node name="Spider" parent="." instance=ExtResource( 9 )]
-<<<<<<< HEAD
-transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 231.338, 3.61608, -2.471 )
-=======
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 230.918, 3.61608, -2.471 )
->>>>>>> c5c204bfd8cda16e4322cea0c4f4b69c224d56e1
 
 [node name="SmallCrown" parent="." instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 84.024, 23.9227, -4.42871 )

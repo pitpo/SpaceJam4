@@ -28,6 +28,8 @@ data = PoolVector3Array( -1, 1.622, 0.9452, -1, 1.622, 1, -1, 8.8742, 1, 0.3333,
 layers = 3
 
 [node name="StaticBody" type="StaticBody" parent="Cube" index="0"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Cube/StaticBody" index="0"]
 shape = SubResource( 1 )
