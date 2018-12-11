@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="SpaceJam4"
+config/name="King in Exile"
 run/main_scene="res://Scenes/Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://Sprites/misc-game-crown.png"
 
 [autoload]
 

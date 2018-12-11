@@ -109,13 +109,12 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1920, 1080 )
+size = Vector2( 1920, 1001 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
@@ -190,6 +189,7 @@ texture_progress = ExtResource( 9 )
 fill_mode = 6
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+editor/display_folded = true
 stream = ExtResource( 10 )
 volume_db = -18.0
 autoplay = true

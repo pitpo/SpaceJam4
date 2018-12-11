@@ -28,16 +28,43 @@ func on_camera_exited(camera):
 [sub_resource type="SphereMesh" id=2]
 
 material = ExtResource( 1 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 1.0
+height = 2.0
+radial_segments = 64
+rings = 32
+is_hemisphere = false
 
 [sub_resource type="SphereShape" id=3]
 
+margin = 0.04
+radius = 1.0
 
 [node name="UFO Projectile" type="KinematicBody"]
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+move_lock_x = false
+move_lock_y = false
+move_lock_z = false
+collision/safe_margin = 0.001
 script = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
 mesh = SubResource( 2 )
+skeleton = NodePath("..")
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -47,5 +74,6 @@ disabled = true
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+aabb = AABB( -1, -1, -1, 2, 2, 2 )
 
 [connection signal="camera_exited" from="VisibilityNotifier" to="." method="on_camera_exited"]
